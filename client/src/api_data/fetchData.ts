@@ -6,7 +6,8 @@ async function fetchData() {
         const response = await axios.get('https://dummyjson.com/products?limit=50');
         const allData = response.data.products;
         const groupedData = _.groupBy(allData, 'category');
-        return { groupedData, allData };
+        const chunkData=_.chunk(allData,10);
+        return { groupedData, allData, chunkData };
     } catch (error) {
         console.error('Error fetching data:', error);
     }

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import fetchData from '../api_data/fetchData';
 import {useDispatch} from 'react-redux';
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
+// ===================fetching product keys===================
 const dataFetch = async (setGroupKeys) => {
   try {
     const { groupedData } = await fetchData();
@@ -13,8 +13,9 @@ const dataFetch = async (setGroupKeys) => {
   }
 };
 
-function Sideebar() {
+function Sidebar() {
   const [groupKeys, setGroupKeys] = useState([]);
+  const dispatch=useDispatch();
 
   useEffect(() => {
     let isMounted = true;
@@ -34,15 +35,29 @@ function Sideebar() {
     };
   }, []);
 
-  const dispatch=useDispatch();
+// ===================option handler===================
   const optionHandler= (e)=>{
     dispatch({type:'optionChange',payload:e.target.value});
   }
 
+// ===================search function===================
+  const searchHandler=(word)=>{
+    if(word==null || word==''){
+      return null
+    }
+    else{
+    dispatch({type:'searchWord',payload:word.toLowerCase()})
+    }
+  }
+
   return (
-    <Sidebar>
-  <Menu>
-    <MenuItem>
+  <div>
+  <div className="flex flex-col gap-1">
+    <p>Search product</p>
+    <input type="text" placeholder='Search product' className='p-1 border border-black w-full outline-0' onChange={(e)=>searchHandler(e.target.value)}/>
+  </div>
+  <div className="flex flex-col gap-1 mt-3">
+    <p>Select category</p>
       <select className='p-1 border border-black w-full outline-0 ' onChange={(e)=>optionHandler(e)}>
       <option value='all'>all products</option>
         {groupKeys.map((item, index) => (
@@ -51,15 +66,9 @@ function Sideebar() {
           </option>
         ))}
       </select>
-    </MenuItem>
-    <SubMenu label="Sub Menu">
-      <MenuItem> Item </MenuItem>
-      <MenuItem> Item </MenuItem>
-    </SubMenu>
-    <MenuItem> Item </MenuItem>
-  </Menu>
-</Sidebar>
+  </div>
+  </div>
   );
 }
 
-export default Sideebar;
+export default Sidebar;
