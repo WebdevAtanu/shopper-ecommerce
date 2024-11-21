@@ -10,9 +10,9 @@ import {
 
 function ProductCard(props) {
   return (
-    <Card className='h-full'>
+    <Card className='h-full group'>
     <div className="w-1/2 m-auto overflow-hidden mb-1">
-      <img src={props.thumbnail} alt="Product" className='hover:scale-110 duration-150'/>
+      <img src={props.thumbnail} alt="Product" className='group-hover:scale-110 duration-150'/>
     </div>
     <CardHeader>
     <CardTitle>{props.title}</CardTitle>

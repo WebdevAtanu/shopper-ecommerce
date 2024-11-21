@@ -5,19 +5,9 @@ import { Link } from 'react-router-dom';
 import ProductCard from '@/childs/ProductCard';
 import ProductButton from '@/childs/ProductButton';
 import ProductSkeleton from '@/childs/ProductSkeleton';
-import Sidebar from '@/components/Sidebar';
-import Slider from '@/components/Slider';
-
-
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
-
+import Sidebar from '@/childs/Sidebar';
 
 import { Button } from "@/components/ui/button"
-
 
 import {
   Pagination,
@@ -43,81 +33,66 @@ async function dataFetch(setGroupProduct,setAllProduct,setChunkProduct) {
 }
 
 function Products() {
-  const [groupProduct, setGroupProduct] = useState([]);
   const [allProduct, setAllProduct] = useState([]);
+  const [groupProduct, setGroupProduct] = useState([]);
   const [chunkProduct, setChunkProduct] = useState([]);
   const [selected, setSelected] = useState('');
   const [searchProduct, setSearchProduct] = useState([]);
-  const [flag, setFlag] = useState(true);
+  const [flag, setFlag] = useState(0);
   const [page, setPage] = useState(0);
   const option = useSelector(state => state.categoryReducer);
   const word=useSelector(state=>state.searchReducer)
   const dispatch=useDispatch();
 
-    useEffect(() => {
-        dataFetch(setGroupProduct, setAllProduct, setChunkProduct);
-    }, [page]);
+  useEffect(() => {
+      dataFetch(setGroupProduct, setAllProduct, setChunkProduct);
+    }, []);
 
-  //handle scroll==================================
-    // const handleScroll = () => {
-    //     let height = document.documentElement.scrollHeight;
-    //     let inner = window.innerHeight;
-    //     let top = document.documentElement.scrollTop;
-    //         if (top + inner + 1 >= height) {
-    //             setPage(page+1);
-    //         }
-    // }
+  useEffect(()=>{
+      scrollTo(0,0);
+    },[page])
 
-  //handle category==================================
-    useEffect(() => {
+  //handle category change==================================
+  useEffect(() => {
         if (option.category != 'all') {
             setSelected(option.category);
-            setFlag(true);
+            setFlag(1);
         } else {
-            setFlag(false);
+            setFlag(0);
         }
     }, [option]);
 
-  //handle search==================================
+//handle search change==================================
     useEffect(() => {
+        if (word.search=="") {
+            setFlag(0);
+        }
+        else{
         let filteredProduct = allProduct.filter(item => item.title.toLowerCase().includes(word.search));
         setSearchProduct(filteredProduct);
-        if (searchProduct.length != 0) {
-            setFlag(null);
+        setFlag(2);
         }
     }, [word]);
 
-    useEffect(()=>{
-      scrollTo(0,0);
-    },[page])
-  
+//card renders====================================   
     const renderProducts = (items) => items.map((item) => (
     <div key={item.id} className='border border-gray-400 py-3 flex flex-col justify-between bg-white'>
       <Link to='/product' state={item}>
       <ProductCard thumbnail={item.thumbnail}
-      title={item.title}
-      description={item.description.slice(0, 50)}
-      brand={item.brand}
-      price={item.price}
-      rating={item.rating}
-      discount={item.discountPercentage}/>
-    </Link>
-    <ProductButton/>
-    </div>
-    ));
+        title={item.title}
+        description={item.description.slice(0, 50)}
+        brand={item.brand}
+        price={item.price}
+        rating={item.rating}
+        discount={item.discountPercentage}/>
+      </Link>
+      <ProductButton/>
+      </div>
+      ));
 
     return (
     <>
-        <div className="flex justify-end px-3 py-2">
-        <HoverCard>
-  <HoverCardTrigger className='border border-black py-1 px-3 cursor-pointer'><i className="bi bi-funnel"></i> Filter</HoverCardTrigger>
-  <HoverCardContent>
     <Sidebar/>
-  </HoverCardContent>
-</HoverCard>
-
-          
-    </div>
     {
     (allProduct.length!=0)?
     <div>
@@ -125,7 +100,7 @@ function Products() {
         <div className='col-span-4'>
           <div className="p-2 grid grid-cols-2 md:grid-cols-5 gap-1 bg-gray-100">
             {
-            flag==true ? renderProducts(groupProduct[selected] || []) : flag==false? renderProducts(chunkProduct[page] || []): searchProduct.length!=0 ?renderProducts(searchProduct):<h1 className='text-center col-span-4'>No product found</h1>
+            flag==0 ? renderProducts(chunkProduct[page] || []) : flag==1? renderProducts(groupProduct[selected] || []): flag==2? searchProduct.length!=0 ?renderProducts(searchProduct):<h1 className='text-center col-span-4'>No product found</h1>:<h1>Something Wents Wrong!!</h1>
             }
           </div>
         </div>
@@ -134,36 +109,40 @@ function Products() {
     :
     <ProductSkeleton/>
     }
-    <div className="p-3">
-    <Pagination>
-  <PaginationContent>
-    <PaginationItem>
-    {
-      page==0?<PaginationPrevious className='text-gray-500'/>:<PaginationPrevious onClick={()=>setPage(page-1)} className='cursor-pointer'/>
-    }
-    </PaginationItem>
-    
-      {
-        chunkProduct.map((item,i)=>{
-          return(
-            <PaginationItem key={i}>
-            <button onClick={()=>setPage(i)} className={`${i==page?'border border-gray-500':'bg-white'} border rounded px-2 hover:bg-gray-100`}>{i}</button>
-            </PaginationItem>
-            )
-        })
-      }
-    
-    <PaginationItem>
-      <PaginationEllipsis />
-    </PaginationItem>
-    <PaginationItem>{
-      chunkProduct.length-1==page?<PaginationNext className='text-gray-500'/>:<PaginationNext onClick={()=>setPage(page+1)} className='cursor-pointer'/>
-    }
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>
-</div>
 
+    {
+      flag==0?
+      <div className="p-3">
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem>
+        {
+        page==0?<PaginationPrevious className='text-gray-500'/>:<PaginationPrevious onClick={()=>setPage(page-1)} className='cursor-pointer'/>
+          }
+        </PaginationItem>
+        
+        {
+        chunkProduct.map((item,i)=>{
+        return(
+        <PaginationItem key={i}>
+          <button onClick={()=>setPage(i)} className={`${i==page?'border border-gray-500':'bg-white'} border rounded px-2 hover:bg-gray-100`}>{i}</button>
+        </PaginationItem>
+        )
+        })
+        }
+        
+        <PaginationItem>
+          <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>{
+            chunkProduct.length-1==page?<PaginationNext className='text-gray-500'/>:<PaginationNext onClick={()=>setPage(page+1)} className='cursor-pointer'/>
+              }
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+      :null
+    }
     </>
     );
 }

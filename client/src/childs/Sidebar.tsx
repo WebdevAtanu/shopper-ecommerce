@@ -16,6 +16,7 @@ const dataFetch = async (setGroupKeys) => {
 function Sidebar() {
   const [groupKeys, setGroupKeys] = useState([]);
   const dispatch=useDispatch();
+  const [word,setWord]=useState('');
 
   useEffect(() => {
     let isMounted = true;
@@ -41,9 +42,9 @@ function Sidebar() {
   }
 
 // ===================search function===================
-  const searchHandler=(word)=>{
+  const searchHandler=()=>{
     if(word==null || word==''){
-      return null
+      dispatch({type:'searchWord',payload:""})
     }
     else{
     dispatch({type:'searchWord',payload:word.toLowerCase()})
@@ -51,23 +52,20 @@ function Sidebar() {
   }
 
   return (
-  <div>
-  <div className="flex flex-col gap-1">
-    <p>Search product</p>
-    <input type="text" placeholder='Search product' className='p-1 border border-black w-full outline-0' onChange={(e)=>searchHandler(e.target.value)}/>
-  </div>
-  <div className="flex flex-col gap-1 mt-3">
-    <p>Select category</p>
-      <select className='p-1 border border-black w-full outline-0 ' onChange={(e)=>optionHandler(e)}>
-      <option value='all'>all products</option>
+    <div className='flex items-center justify-end gap-3 p-3 group'>
+      <select className='p-1 h-full outline-0' onChange={(e)=>optionHandler(e)}>
+        <option value='all'>all products</option>
         {groupKeys.map((item, index) => (
-          <option key={index} value={item}>
-            {item}
-          </option>
+        <option key={index} value={item}>
+          {item}
+        </option>
         ))}
       </select>
-  </div>
-  </div>
+      <div className="flex border border-black gap-1 px-3 py-1 rounded-lg">
+        <input type="text" placeholder='Search product' className='outline-0 border-r' onChange={(e)=>setWord(e.target.value)}/>
+        <button onClick={searchHandler} className='px-1 outline-0 group-hover:text-blue-800'><i className="bi bi-search"></i></button>
+      </div>
+    </div>
   );
 }
 

@@ -38,12 +38,8 @@ function MainNavigation() {
 		<div className='bg-slate-900 flex justify-between items-center p-3 px-6'>
 		<Menubar>
 		  <MenubarMenu>
-		    <NavLink to='/' style={({isActive})=>({color:isActive?'skyblue':'black'})}><MenubarTrigger className='cursor-pointer'>Home</MenubarTrigger></NavLink>
-		  </MenubarMenu>
-
-		  <MenubarMenu>
 		<Dialog>
-		  <DialogTrigger><MenubarTrigger className='cursor-pointer'>Login</MenubarTrigger></DialogTrigger>
+		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Login</DialogTrigger>
 		  <DialogContent>
 		    <DialogHeader>
 		      <DialogTitle>Login</DialogTitle>
@@ -57,7 +53,7 @@ function MainNavigation() {
 
 		  <MenubarMenu>
 		  <Dialog>
-			 <DialogTrigger><MenubarTrigger className='cursor-pointer'>Signup</MenubarTrigger></DialogTrigger>
+			 <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Signup</DialogTrigger>
 			  <DialogContent>
 			    <DialogHeader>
 			      <DialogTitle>Signup</DialogTitle>
@@ -69,9 +65,9 @@ function MainNavigation() {
 			</Dialog>
 		  </MenubarMenu>
 
-<MenubarMenu>
+			<MenubarMenu>
 		      <Sheet>
-      <SheetTrigger><MenubarTrigger className='cursor-pointer'>Cart</MenubarTrigger></SheetTrigger>
+      <SheetTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Cart</SheetTrigger>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Cart</SheetTitle>
@@ -83,7 +79,6 @@ function MainNavigation() {
     </Sheet>
 		  </MenubarMenu>
 		</Menubar>
-
 		<div>Logo</div>
 		</div>
 	)
