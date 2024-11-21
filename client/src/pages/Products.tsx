@@ -37,8 +37,8 @@ function Products() {
   const [searchProduct, setSearchProduct] = useState([]);
   const [flag, setFlag] = useState(0);
   const [page, setPage] = useState(0);
-  const option = useSelector(state => state.categoryReducer);
-  const word=useSelector(state =>state.searchReducer)
+  const option:any = useSelector(state => state.categoryReducer);
+  const word:any=useSelector(state =>state.searchReducer)
 
   useEffect(() => {
       dataFetch(setGroupProduct, setAllProduct, setChunkProduct);
