@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import fetchData from '@/api_data/fetchData';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ProductCard from '@/childs/ProductCard';
 import ProductButton from '@/childs/ProductButton';
@@ -20,7 +20,7 @@ import {
 // Function for getting the return values from fetchData.js
 async function dataFetch(setGroupProduct:any,setAllProduct:any,setChunkProduct:any) {
   try {
-    const { groupedData, allData, chunkData} = await fetchData();
+    const { groupedData, allData, chunkData}:any = await fetchData();
     setGroupProduct(groupedData);
     setAllProduct(allData);
     setChunkProduct(chunkData);
@@ -39,7 +39,6 @@ function Products() {
   const [page, setPage] = useState(0);
   const option = useSelector(state => state.categoryReducer);
   const word=useSelector(state =>state.searchReducer)
-  const dispatch=useDispatch();
 
   useEffect(() => {
       dataFetch(setGroupProduct, setAllProduct, setChunkProduct);
@@ -72,7 +71,7 @@ function Products() {
     }, [word]);
 
 //card renders====================================   
-    const renderProducts = (items) => items.map((item) => (
+    const renderProducts = (items:any) => items.map((item:any) => (
     <div key={item.id} className='border border-gray-400 py-3 flex flex-col justify-between bg-white'>
       <Link to='/product' state={item}>
       <ProductCard thumbnail={item.thumbnail}

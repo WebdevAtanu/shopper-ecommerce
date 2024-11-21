@@ -1,4 +1,4 @@
-const categoryReducer=(state={category:'all'},action:any)=>{
+const categoryReducer=(state:any={category:'all'},action:any)=>{
 	switch (action.type){
 	case 'optionChange':
 		return {

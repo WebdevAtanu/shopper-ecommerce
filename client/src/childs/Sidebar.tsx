@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 // ===================fetching product keys===================
 const dataFetch = async (setGroupKeys:any) => {
   try {
-    const { groupedData } = await fetchData();
+    const { groupedData }:any = await fetchData();
     const groupKeys = Object.keys(groupedData);
     setGroupKeys(groupKeys);
   } catch (error) {

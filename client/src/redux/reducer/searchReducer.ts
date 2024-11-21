@@ -1,4 +1,4 @@
-const searchReducer=(state={search:''},action:any)=>{
+const searchReducer=(state:any={search:''},action:any)=>{
 	switch(action.type){
 	case 'searchWord':
 		return{
