@@ -7,21 +7,18 @@ import ProductButton from '@/childs/ProductButton';
 import ProductSkeleton from '@/childs/ProductSkeleton';
 import Sidebar from '@/childs/Sidebar';
 
-import { Button } from "@/components/ui/button"
-
 import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
 
 // Function for getting the return values from fetchData.js
-async function dataFetch(setGroupProduct,setAllProduct,setChunkProduct) {
+async function dataFetch(setGroupProduct:any,setAllProduct:any,setChunkProduct:any) {
   try {
     const { groupedData, allData, chunkData} = await fetchData();
     setGroupProduct(groupedData);
@@ -41,7 +38,7 @@ function Products() {
   const [flag, setFlag] = useState(0);
   const [page, setPage] = useState(0);
   const option = useSelector(state => state.categoryReducer);
-  const word=useSelector(state=>state.searchReducer)
+  const word=useSelector(state =>state.searchReducer)
   const dispatch=useDispatch();
 
   useEffect(() => {

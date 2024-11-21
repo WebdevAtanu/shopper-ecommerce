@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Card,
   CardContent,
@@ -8,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-function ProductCard(props) {
+function ProductCard(props:any) {
   return (
     <Card className='h-full group'>
     <div className="w-1/2 m-auto overflow-hidden mb-1">

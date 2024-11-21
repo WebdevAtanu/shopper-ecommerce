@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import fetchData from '../api_data/fetchData';
 import {useDispatch} from 'react-redux';
 
 // ===================fetching product keys===================
-const dataFetch = async (setGroupKeys) => {
+const dataFetch = async (setGroupKeys:any) => {
   try {
     const { groupedData } = await fetchData();
     const groupKeys = Object.keys(groupedData);
@@ -22,7 +22,7 @@ function Sidebar() {
     let isMounted = true;
 
     const fetchDataAndSetState = async () => {
-      await dataFetch((keys) => {
+      await dataFetch((keys:any) => {
         if (isMounted) {
           setGroupKeys(keys);
         }
@@ -37,7 +37,7 @@ function Sidebar() {
   }, []);
 
 // ===================option handler===================
-  const optionHandler= (e)=>{
+  const optionHandler= (e:any)=>{
     dispatch({type:'optionChange',payload:e.target.value});
   }
 

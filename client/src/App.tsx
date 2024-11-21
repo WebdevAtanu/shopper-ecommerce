@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import MainNavigation from "@/childs/MainNavigation"
 import Products from "@/pages/Products";

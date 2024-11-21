@@ -1,4 +1,4 @@
-const pageReducer=(state={current:0},action)=>{
+const pageReducer=(state={current:0},action:any)=>{
 	switch (action.type){
 	case 'PREVIOUS':
 		return {

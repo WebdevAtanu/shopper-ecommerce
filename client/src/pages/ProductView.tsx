@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 import {useLocation} from 'react-router-dom';
 import moment from 'moment';
 import ProductButton from '@/childs/ProductButton';
@@ -13,7 +13,6 @@ import {
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
@@ -64,7 +63,7 @@ function ProductView() {
 				<div>
 					<p className='text-xl mt-3'>Customer reviews</p>
 					{
-						data.reviews.map((item,index)=>{
+						data.reviews.map((item:any,index:number)=>{
 							return(
 								<Accordion type="single" collapsible key={index}>
 								  <AccordionItem value="item-1">
