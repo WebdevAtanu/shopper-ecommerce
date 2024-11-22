@@ -22,7 +22,6 @@ async function dataFetch(setGroupProduct:any,setAllProduct:any,setChunkProduct:a
   try {
     const { groupedData, allData, chunkData}:any = await fetchData();
     setGroupProduct(groupedData);
-    console.log(groupedData)
     setAllProduct(allData);
     setChunkProduct(chunkData);
   } catch (error) {

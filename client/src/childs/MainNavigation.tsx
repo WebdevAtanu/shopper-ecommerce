@@ -25,7 +25,7 @@ import {
 
 function MainNavigation() {
 	return (
-		<div className='bg-slate-900 flex justify-between items-center p-3 px-6'>
+		<div className='bg-black flex justify-between items-center p-3 px-6'>
 		<Menubar>
 		  <MenubarMenu>
 		<Dialog>
@@ -69,7 +69,9 @@ function MainNavigation() {
     </Sheet>
 		  </MenubarMenu>
 		</Menubar>
-		<div>Logo</div>
+		<div className='flex justify-end'>
+			<img src="logo.png" alt="" className='w-1/4'/>
+		</div>
 		</div>
 	)
 }
