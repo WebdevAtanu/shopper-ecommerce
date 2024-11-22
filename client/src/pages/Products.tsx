@@ -30,15 +30,15 @@ async function dataFetch(setGroupProduct:any,setAllProduct:any,setChunkProduct:a
 }
 
 function Products() {
-  const [allProduct, setAllProduct] = useState([]);
-  const [groupProduct, setGroupProduct] = useState([]);
-  const [chunkProduct, setChunkProduct] = useState([]);
-  const [selected, setSelected] = useState('');
-  const [searchProduct, setSearchProduct] = useState([]);
+  const [allProduct, setAllProduct] = useState<any[]>([]);
+  const [groupProduct, setGroupProduct] = useState<any[]>([]);
+  const [chunkProduct, setChunkProduct] = useState<any[]>([]);
+  const [selected, setSelected] = useState<string>('');
+  const [searchProduct, setSearchProduct] = useState<any[]>([]);
   const [flag, setFlag] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
-  const option:any = useSelector((state:any) => state.categoryReducer);
-  const word:any=useSelector((state:any) =>state.searchReducer)
+  const option = useSelector((state:any) => state.categoryReducer);
+  const word=useSelector((state:any) =>state.searchReducer)
 
   useEffect(() => {
       dataFetch(setGroupProduct, setAllProduct, setChunkProduct);
