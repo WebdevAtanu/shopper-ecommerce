@@ -22,6 +22,7 @@ async function dataFetch(setGroupProduct:any,setAllProduct:any,setChunkProduct:a
   try {
     const { groupedData, allData, chunkData}:any = await fetchData();
     setGroupProduct(groupedData);
+    console.log(groupedData)
     setAllProduct(allData);
     setChunkProduct(chunkData);
   } catch (error) {
@@ -33,7 +34,7 @@ function Products() {
   const [allProduct, setAllProduct] = useState<any[]>([]);
   const [groupProduct, setGroupProduct] = useState<any[]>([]);
   const [chunkProduct, setChunkProduct] = useState<any[]>([]);
-  const [selected, setSelected] = useState<string>('');
+  const [selected, setSelected] = useState<any>('');
   const [searchProduct, setSearchProduct] = useState<any[]>([]);
   const [flag, setFlag] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
