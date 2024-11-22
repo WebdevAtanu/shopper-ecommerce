@@ -35,10 +35,10 @@ function Products() {
   const [chunkProduct, setChunkProduct] = useState([]);
   const [selected, setSelected] = useState('');
   const [searchProduct, setSearchProduct] = useState([]);
-  const [flag, setFlag] = useState(0);
-  const [page, setPage] = useState(0);
-  const option:any = useSelector(state => state.categoryReducer);
-  const word:any=useSelector(state =>state.searchReducer)
+  const [flag, setFlag] = useState<number>(0);
+  const [page, setPage] = useState<number>(0);
+  const option:any = useSelector((state:any) => state.categoryReducer);
+  const word:any=useSelector((state:any) =>state.searchReducer)
 
   useEffect(() => {
       dataFetch(setGroupProduct, setAllProduct, setChunkProduct);
@@ -118,7 +118,7 @@ function Products() {
         </PaginationItem>
         
         {
-        chunkProduct.map((item,i)=>{
+        chunkProduct.map((_,i)=>{
         return(
         <PaginationItem key={i}>
           <button onClick={()=>setPage(i)} className={`${i==page?'border border-gray-500':'bg-white'} border rounded px-2 hover:bg-gray-100`}>{i}</button>
