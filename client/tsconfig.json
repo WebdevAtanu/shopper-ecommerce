@@ -13,8 +13,5 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  },
-   "compilerOptions": {
-    "skipLibCheck": true
   }
 }
