@@ -14,4 +14,7 @@
       "@/*": ["./src/*"]
     }
   }
+   "compilerOptions": {
+    "skipLibCheck": true
+  }
 }
