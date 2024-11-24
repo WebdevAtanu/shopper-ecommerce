@@ -29,11 +29,6 @@ function BannerSlider() {
 					interval:5000,
 					arrows:false,
 					height:'300px',
-					breakpoints:{
-					768:{
-						height:'100px',
-					}
-				}
 			}}>
 			{
 				banner.map((item,i)=>{

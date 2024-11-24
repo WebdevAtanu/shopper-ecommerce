@@ -21,6 +21,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
+import LoginForm from '@/childs/LoginForm';
+import SignupForm from '@/childs/SignupForm';
+
 
 
 function MainNavigation() {
@@ -34,8 +37,8 @@ function MainNavigation() {
 		    <DialogHeader>
 		      <DialogTitle>Login</DialogTitle>
 		      <DialogDescription>
-		        form
 		      </DialogDescription>
+		        <LoginForm/>
 		    </DialogHeader>
 		  </DialogContent>
 		</Dialog>
@@ -46,10 +49,10 @@ function MainNavigation() {
 			 <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Signup</DialogTrigger>
 			  <DialogContent>
 			    <DialogHeader>
-			      <DialogTitle>Signup</DialogTitle>
+			      <DialogTitle>Create your account</DialogTitle>
 			      <DialogDescription>
-			        form
 			      </DialogDescription>
+			      <SignupForm/>
 			    </DialogHeader>
 			  </DialogContent>
 			</Dialog>
