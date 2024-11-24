@@ -12,12 +12,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "skipLibCheck": true
+    }
   },
-    "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/types/**/*.d.ts"  // Ensure custom types are included
-  ]
+   "compilerOptions": {
+    "skipLibCheck": true
+  }
 }

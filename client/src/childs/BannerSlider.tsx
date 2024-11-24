@@ -1,6 +1,8 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
+const SplideComponent: any = Splide;
+
 function BannerSlider() {
 	let banner=[
 	{
@@ -21,7 +23,7 @@ function BannerSlider() {
 	]
 	return (
 		<div className='h-1/2'>
-			<Splide aria-label="My Favorite Images" options={
+			<SplideComponent aria-label="My Favorite Images" options={
 				{
 					type:'loop',
 					autoplay:true,
@@ -43,7 +45,7 @@ function BannerSlider() {
 					)
 				})
 			}
-</Splide>
+</SplideComponent>
 		</div>
 	)
 }
