@@ -1,9 +1,7 @@
-import {useState,useEffect} from 'react';
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/Label"
 
 export default function SignupForm() {
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
@@ -22,15 +20,15 @@ export default function SignupForm() {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid w-full items-center gap-1">
-            <Label htmlFor="email">Name {errors.name && <span className='text-sm text-red-500'> is required</span>}</Label>
+            <label htmlFor="email">Name {errors.name && <span className='text-sm text-red-500'> is required</span>}</label>
             <Input type="text" id="name" placeholder="John Doe" {...register("name", { required: true })}/>
           </div>
           <div className="grid w-full items-center gap-1 mt-4">
-            <Label htmlFor="email">Email {errors.email && <span className='text-sm text-red-500'> is required</span>}</Label>
+            <label htmlFor="email">Email {errors.email && <span className='text-sm text-red-500'> is required</span>}</label>
             <Input type="text" id="email" placeholder="JohnDoe@gmail.com" {...register("email", { required: true })}/>
           </div>
           <div className="grid w-full items-center gap-1 mt-4">
-            <Label htmlFor="email">Password {errors.password && <span className='text-sm text-red-500'> is required</span>}</Label>
+            <label htmlFor="email">Password {errors.password && <span className='text-sm text-red-500'> is required</span>}</label>
             <Input type="text" id="password" placeholder="********" {...register("password", { required: true })}/>
             <p className="text-sm mt-1">Must contain 8+ characters, including at least 1 letter and 1 number.</p>
           </div>
