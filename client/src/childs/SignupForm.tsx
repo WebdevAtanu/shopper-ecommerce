@@ -1,23 +1,13 @@
 import {useState,useEffect} from 'react';
 import { useForm } from "react-hook-form";
 
-import { toast } from "@/components/hooks/use-toast"
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/Label"
 
 export default function SignupForm() {
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const onSubmit = (data:any) => {
                 console.log(data);
                 reset();
             }
