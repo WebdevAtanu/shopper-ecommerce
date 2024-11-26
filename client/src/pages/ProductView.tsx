@@ -1,14 +1,7 @@
 import {useEffect} from 'react'
 import {useLocation} from 'react-router-dom';
-import moment from 'moment';
 import ProductButton from '@/childs/ProductButton';
 import { Link } from 'react-router-dom';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
 import {
   Breadcrumb,
