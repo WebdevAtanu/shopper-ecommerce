@@ -11,7 +11,7 @@ config({
 
 const app=express();
 app.use(cors({
-	origin:[process.env.FRONTEND_URL],
+	origin:[process.env.FRONTEND_URL,process.env.LOCAL_HOST],
 	credentials:true
 }))
 app.use(cookieParser());

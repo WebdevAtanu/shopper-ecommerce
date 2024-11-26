@@ -75,13 +75,12 @@ function Products() {
     const renderProducts = (items:any) => items.map((item:any) => (
     <div key={item.id} className='border border-gray-400 py-3 flex flex-col justify-between bg-white'>
       <Link to='/product' state={item}>
-      <ProductCard thumbnail={item.thumbnail}
+      <ProductCard image={item.image}
         title={item.title}
         description={item.description.slice(0, 50)}
         brand={item.brand}
         price={item.price}
-        rating={item.rating}
-        discount={item.discountPercentage}/>
+        discount={item.discount}/>
       </Link>
       <ProductButton/>
       </div>
@@ -105,7 +104,17 @@ function Products() {
       </div>
     </div>
     :
-    <ProductSkeleton/>
+    <div className='grid gap-2'>
+        <div className='col-span-4'>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-5 bg-gray-100">
+            <ProductSkeleton/>
+            <ProductSkeleton/>
+            <ProductSkeleton/>
+            <ProductSkeleton/>
+            <ProductSkeleton/>
+          </div>
+        </div>
+      </div>
     }
 
     {

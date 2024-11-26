@@ -46,7 +46,7 @@ const productSchema=new mongoose.Schema({
 	},
 	image:{
 		type:String,
-		default:'https://image.pngaaa.com/13/1887013-middle.png'
+		default:'https://github.com/WebdevAtanu/shopper-ecommerce/blob/main/server/public/noimg.png?raw=true'
 	},
 },{
 	timestamps:true
