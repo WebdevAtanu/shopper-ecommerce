@@ -46,7 +46,7 @@ function ProductView() {
 		<div className="md:min-h-screen">
 			<div className='flex flex-col gap-1 p-5'>
 				<img src={data.image} alt="" className='w-1/2 m-auto mb-5'/>
-				<p className='my-3 text-center'><span className='text-green-700'>Free delivery, </span>Delivery by {new Date()}</p>
+				<p className='my-3 text-center'><span className='text-green-700'>Free delivery</span></p>
 				<ProductButton/>
 			</div>
 			</div>
