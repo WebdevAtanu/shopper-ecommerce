@@ -37,7 +37,8 @@ export default function SignupForm() {
             By clicking “Sign up”, you agree to our terms of service and privacy policy.
           </p>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-2 gap-1'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="grid w-full items-center gap-1">
             <label htmlFor="email">Name {errors.name && <span className='text-sm text-red-500'>{typeof errors.name.message === 'string' ? errors.name.message : 'Invalid email'}</span>}</label>
             <Input type="text" id="name" placeholder="John Doe" {...register("name", 
@@ -84,7 +85,7 @@ export default function SignupForm() {
              })}/>
           </div>
 
-          <div className="grid w-full items-center gap-1 col-span-2">
+          <div className="grid w-full items-center gap-1">
             <label htmlFor="email">Address {errors.address && <span className='text-sm text-red-500'>{typeof errors.address.message === 'string' ? errors.address.message : 'Invalid email'}</span>}</label>
             <Textarea placeholder="Your address here" id="address" className='resize-none' {...register("address",
             { required: 'address is required',
@@ -94,7 +95,8 @@ export default function SignupForm() {
               }
             })}/>
           </div>
-          <div className="mt-6 col-span-2">
+          </div>
+          <div className="mt-6">
           {
             load?<Button className='w-full' disabled>Please wait...</Button>:<Button className='w-full'>Signup</Button>
           }
