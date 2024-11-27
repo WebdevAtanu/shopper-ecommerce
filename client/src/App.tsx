@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import './App.css'
 import MainNavigation from "@/childs/MainNavigation"
 import Home from "@/pages/Home";

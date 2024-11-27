@@ -13,7 +13,7 @@ export default function LoginForm() {
     const onSubmit = (data:any) => {
                 setLoad(true);
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/user/login`,data,{
-                  header:{
+                  headers:{
                     'content-type':'application/json'
                   },
                   withCredentials:true

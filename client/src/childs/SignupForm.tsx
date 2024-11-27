@@ -12,7 +12,7 @@ export default function SignupForm() {
     const onSubmit = (data:any) => {
                 setLoad(true);
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/user/register`,data,{
-                  header:{
+                  headers:{
                     'content-type':'application/json'
                   },
                   withCredentials:true
@@ -39,7 +39,7 @@ export default function SignupForm() {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-2 gap-1'>
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="email">Name {errors.name && <span className='text-sm text-red-500'> {errors.name.message}</span>}</label>
+            <label htmlFor="email">Name {errors.name && <span className='text-sm text-red-500'>{typeof errors.name.message === 'string' ? errors.name.message : 'Invalid email'}</span>}</label>
             <Input type="text" id="name" placeholder="John Doe" {...register("name", 
               { required:'name is required',
               minLength:{
@@ -49,7 +49,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="email">Phone {errors.phone && <span className='text-sm text-red-500'>{errors.phone.message}</span>}</label>
+            <label htmlFor="email">Phone {errors.phone && <span className='text-sm text-red-500'>{typeof errors.phone.message === 'string' ? errors.phone.message : 'Invalid email'}</span>}</label>
             <Input type="number" id="number" placeholder="0000000000" {...register("phone", 
               { required:'phone no is required',
               minLength:{
@@ -63,7 +63,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="email">Email {errors.email && <span className='text-sm text-red-500'>{errors.email.message}</span>}</label>
+            <label htmlFor="email">Email {errors.email && <span className='text-sm text-red-500'>{typeof errors.email.message === 'string' ? errors.email.message : 'Invalid email'}</span>}</label>
             <Input type="email" id="email" placeholder="JohnDoe@gmail.com" {...register("email", 
             { required: 'email is required',
             pattern: {
@@ -74,7 +74,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="email">Password {errors.password && <span className='text-sm text-red-500'>{errors.password.message}</span>}</label>
+            <label htmlFor="email">Password {errors.password && <span className='text-sm text-red-500'>{typeof errors.password.message === 'string' ? errors.password.message : 'Invalid email'}</span>}</label>
             <Input type="password" id="password" placeholder="********" {...register("password", 
             { required: 'password is required',
              minLength:{
@@ -85,7 +85,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1 col-span-2">
-            <label htmlFor="email">Address {errors.address && <span className='text-sm text-red-500'>{errors.address.message}</span>}</label>
+            <label htmlFor="email">Address {errors.address && <span className='text-sm text-red-500'>{typeof errors.address.message === 'string' ? errors.address.message : 'Invalid email'}</span>}</label>
             <Textarea placeholder="Your address here" id="address" className='resize-none' {...register("address",
             { required: 'address is required',
             minLength:{
