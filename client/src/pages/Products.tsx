@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import ProductCard from '@/childs/ProductCard';
 import ProductButton from '@/childs/ProductButton';
 import ProductSkeleton from '@/childs/ProductSkeleton';
-import Sidebar from '@/childs/Sidebar';
-import BannerSlider from '@/childs/BannerSlider';
 
 import {
   Pagination,
@@ -88,8 +86,6 @@ function Products() {
 
     return (
     <>
-    <BannerSlider/>
-    <Sidebar/>
     {
     (allProduct.length!=0)?
     <div>

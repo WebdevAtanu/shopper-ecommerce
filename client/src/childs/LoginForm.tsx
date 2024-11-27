@@ -1,12 +1,33 @@
+import {useState} from 'react';
 import { useForm } from "react-hook-form";
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import {useDispatch} from 'react-redux';
 
 export default function LoginForm() {
+  const [load,setLoad]=useState(false);
+  const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
     const onSubmit = (data:any) => {
-                console.log(data);
+                setLoad(true);
+                axios.post(`${import.meta.env.VITE_BACKEND}/api/user/login`,data,{
+                  header:{
+                    'content-type':'application/json'
+                  },
+                  withCredentials:true
+                })
+                .then(res=>{
+                  toast(res.data.message);
+                  setLoad(false);
+                  dispatch({type:'statusChange'});
+                })
+                .catch(err=>{
+                  console.log(err);
+                  toast('Login failed- invalid credential');
+                  setLoad(false);
+                })
                 reset();
             }
   
@@ -26,10 +47,11 @@ export default function LoginForm() {
           <div className="grid w-full items-center gap-1 mt-4">
             <label htmlFor="email">Password {errors.password && <span className='text-sm text-red-500'> is required</span>}</label>
             <Input type="text" id="password" placeholder="********" {...register("password", { required: true })}/>
-            <p className="text-sm mt-1">Must contain 8+ characters, including at least 1 letter and 1 number.</p>
           </div>
           <div className="mt-6">
-            <Button className='w-full'>Login</Button>
+          {
+            load?<Button className='w-full' disabled>Please wait...</Button>:<Button className='w-full'>Login</Button>
+          }
           </div>
         </form>
       </div>
