@@ -21,7 +21,7 @@ export default function LoginForm() {
                 .then(res=>{
                   toast(res.data.message);
                   setLoad(false);
-                  dispatch({type:'statusChange'});
+                  dispatch({type:'stateTrue'});
                 })
                 .catch(err=>{
                   console.log(err);

@@ -1,8 +1,14 @@
 const loginReducer=(state:any={status:false},action:any)=>{
-	if(action.type=='statusChange'){
-		return {status:true}
+	switch (action.type){
+	case 'stateTrue':
+		return {
+		status:true
 	}
-	else{
+	case 'stateFalse':
+	return{
+		status:false
+	}
+	default:
 		return state
 	}
 }

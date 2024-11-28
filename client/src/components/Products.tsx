@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import fetchData from '@/api_data/fetchData';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ProductCard from '@/childs/ProductCard';
-import ProductButton from '@/childs/ProductButton';
-import ProductSkeleton from '@/childs/ProductSkeleton';
+import ProductCard from '@/components/ProductCard';
+import ProductButton from '@/components/ProductButton';
+import ProductSkeleton from '@/components/ProductSkeleton';
 
 import {
   Pagination,

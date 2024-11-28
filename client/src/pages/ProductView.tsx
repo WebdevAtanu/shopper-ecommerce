@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import {useLocation} from 'react-router-dom';
-import ProductButton from '@/childs/ProductButton';
+import ProductButton from '@/components/ProductButton';
 import { Link } from 'react-router-dom';
 
 import {

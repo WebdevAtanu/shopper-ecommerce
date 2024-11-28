@@ -21,15 +21,38 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-import LoginForm from '@/childs/LoginForm';
-import SignupForm from '@/childs/SignupForm';
-
+import LoginForm from '@/components/LoginForm';
+import SignupForm from '@/components/SignupForm';
+import Account from '@/components/Account';
+import {useSelector} from 'react-redux';
 
 
 function MainNavigation() {
+	const status=useSelector((state:any)=>state.loginReducer);
+	const userData=useSelector((state:any)=>state.userReducer);
 	return (
 		<div className='bg-black flex justify-between items-center p-3 px-6'>
+		<div className='flex justify-start'>
+			<img src="logo.png" alt="" className='w-1/4'/>
+		</div>
 		<Menubar>
+		{
+			status.status?
+			<MenubarMenu>
+		<Dialog>
+		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>{userData.data.name}</DialogTrigger>
+		  <DialogContent>
+		    <DialogHeader>
+		      <DialogTitle>Account</DialogTitle>
+		      <DialogDescription>
+		      </DialogDescription>
+		        <Account/>
+		    </DialogHeader>
+		  </DialogContent>
+		</Dialog>
+		  </MenubarMenu>
+		  :
+		  <>
 		  <MenubarMenu>
 		<Dialog>
 		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Login</DialogTrigger>
@@ -57,6 +80,8 @@ function MainNavigation() {
 			  </DialogContent>
 			</Dialog>
 		  </MenubarMenu>
+		  </>
+		}
 
 			<MenubarMenu>
 		      <Sheet>
@@ -72,9 +97,7 @@ function MainNavigation() {
     </Sheet>
 		  </MenubarMenu>
 		</Menubar>
-		<div className='flex justify-end'>
-			<img src="logo.png" alt="" className='w-1/4'/>
-		</div>
+		
 		</div>
 	)
 }
