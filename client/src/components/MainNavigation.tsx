@@ -66,7 +66,7 @@ function MainNavigation() {
 		  </DialogContent>
 		</Dialog>
 		  </MenubarMenu>
-
+		  
 		  <MenubarMenu>
 		  <Dialog>
 			 <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Signup</DialogTrigger>
@@ -82,7 +82,6 @@ function MainNavigation() {
 		  </MenubarMenu>
 		  </>
 		}
-
 			<MenubarMenu>
 		      <Sheet>
       <SheetTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Cart</SheetTrigger>
@@ -97,7 +96,6 @@ function MainNavigation() {
     </Sheet>
 		  </MenubarMenu>
 		</Menubar>
-		
 		</div>
 	)
 }

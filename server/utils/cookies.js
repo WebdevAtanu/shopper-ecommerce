@@ -4,7 +4,7 @@ export const cookieSetter=(jwtSecret,user,res,message)=>{
 	res.status(201)
         .cookie('token',token,{
             httpOnly:true,
-            maxAge:15*60*1000,
+            maxAge:24*60*60*1000,
             sameSite:'none',
             secure:true
         })

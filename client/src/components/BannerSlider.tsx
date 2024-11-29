@@ -39,7 +39,7 @@ function BannerSlider() {
 					)
 				})
 			}
-</Splide>
+			</Splide>
 		</div>
 	)
 }
