@@ -10,7 +10,7 @@ function Account() {
 		axios.get(`${import.meta.env.VITE_BACKEND}/api/user/logout`,{withCredentials:true})
 		.then(res=>{
 			dispatch({type:'stateFalse'});
-			// toast(res.data.message);
+			toast(res.data.message);
 			toast('logout not working? there is a problem on render server');
 	})
 	}
