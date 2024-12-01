@@ -40,7 +40,7 @@ function MainNavigation() {
 			status.status?
 			<MenubarMenu>
 		<Dialog>
-		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg flex items-center gap-1'><i className="bi bi-person-circle"></i> <span>{userData.data.name.split(' ')[0]}</span></DialogTrigger>
+		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg flex items-center gap-1'><i className="bi bi-person-circle"></i> <span>{userData.data.name}</span></DialogTrigger>
 		  <DialogContent>
 		    <DialogHeader>
 		      <DialogTitle>Account</DialogTitle>

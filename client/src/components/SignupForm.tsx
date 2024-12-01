@@ -122,7 +122,7 @@ export default function SignupForm() {
           <div className="grid w-full items-center gap-1">
             <label htmlFor="password">Create password {errors.password && <span className='text-sm text-red-500'>{typeof errors.password.message === 'string' ? errors.password.message : 'Invalid email'}</span>}</label>
             <div className="flex items-center border rounded-lg">
-            <Input type={show?"text":"password"} className='border-0' id="password" placeholder="********" {...register("password", 
+            <Input type={show?"text":"password"} className='border-0 focus-visible:ring-transparent' id="password" placeholder="********" {...register("password", 
             { required: 'password is required',
              minLength:{
                 value:6,
@@ -142,7 +142,7 @@ export default function SignupForm() {
                 message:'enter correct address'
               },
             maxLength:{
-                value:25,
+                value:40,
                 message:'address is too long'
               }
             })}/>
