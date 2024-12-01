@@ -38,7 +38,7 @@ export default function SignupForm() {
                 reset();
             }
 
-      const otpData = (e) => {
+      const otpData = (e:any) => {
         e.preventDefault();
                 setLoad(true);
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/user/register/verify`,{...userData,valid_otp:otp},{
@@ -141,7 +141,7 @@ export default function SignupForm() {
                 value:15,
                 message:'enter correct address'
               },
-            minLength:{
+            maxLength:{
                 value:25,
                 message:'address is too long'
               }
