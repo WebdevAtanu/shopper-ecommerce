@@ -53,7 +53,7 @@ function Sidebar() {
 
   return (
     <div className='flex items-center justify-end gap-3 p-3 group'>
-      <select className='p-1 h-full outline-0' onChange={(e)=>optionHandler(e)}>
+      <select className='p-1 h-full outline-0 bg-white border border-black' onChange={(e)=>optionHandler(e)}>
         <option value='all'>all products</option>
         {groupKeys.map((item, index) => (
         <option key={index} value={item}>
@@ -61,7 +61,7 @@ function Sidebar() {
         </option>
         ))}
       </select>
-      <div className="flex border border-black gap-1 px-3 py-1 rounded-lg">
+      <div className="flex border border-black gap-1 px-3 py-1">
         <input type="text" placeholder='Search product' className='outline-0 border-r' onChange={(e)=>setWord(e.target.value)}/>
         <button onClick={searchHandler} className='px-1 outline-0 group-hover:text-blue-800'><i className="bi bi-search"></i></button>
       </div>

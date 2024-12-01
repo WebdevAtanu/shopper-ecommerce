@@ -12,7 +12,7 @@ function App() {
     <>
       <Provider store={Store}>
     <BrowserRouter>
-    <h1 className='text-center p-1 bg-red-200'>Initial loading is slow because of render hosting</h1>
+    <h1 className='text-center p-1 bg-red-200'>Initial loading is slow because of free render hosting</h1>
     <MainNavigation/>
       <Routes>
         <Route path='/' element={<Home/>}/>

@@ -32,15 +32,15 @@ function MainNavigation() {
 	const userData=useSelector((state:any)=>state.userReducer);
 	return (
 		<div className='bg-black flex justify-between items-center p-3 px-6'>
-		<div className='flex justify-start'>
-			<img src="logo.png" alt="" className='w-1/4'/>
+		<div className='flex justify-start w-1/4'>
+			<img src="logo.png" alt="" className='w-full md:w-1/4'/>
 		</div>
 		<Menubar>
 		{
 			status.status?
 			<MenubarMenu>
 		<Dialog>
-		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>{userData.data.name}</DialogTrigger>
+		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg flex items-center gap-1'><i className="bi bi-person-circle"></i> <span>{userData.data.name.split(' ')[0]}</span></DialogTrigger>
 		  <DialogContent>
 		    <DialogHeader>
 		      <DialogTitle>Account</DialogTitle>
@@ -84,7 +84,7 @@ function MainNavigation() {
 		}
 			<MenubarMenu>
 		      <Sheet>
-      <SheetTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Cart</SheetTrigger>
+      <SheetTrigger className='px-3 hover:bg-gray-200 rounded-lg flex items-center'><i className="bi bi-cart3"></i> <span>cart</span></SheetTrigger>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Cart</SheetTitle>

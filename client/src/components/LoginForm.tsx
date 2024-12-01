@@ -34,10 +34,8 @@ export default function LoginForm() {
   return (
     <div className="hero bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <p className="py-3">
-            Enter your login credentials
-          </p>
+        <div className="text-left">
+          <p className="">Enter your login credentials</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid w-full items-center gap-1 mt-4">

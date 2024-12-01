@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const url=process.env.DB_URL;
 const database='shopper';
-const dbConnection=async()=>{
+const db_connection=async()=>{
 	mongoose.connect(`${url}/${database}`)
 	.then(()=>{
 		console.log('database connected');
@@ -10,4 +10,4 @@ const dbConnection=async()=>{
 	})
 }
 
-export default dbConnection;
+export default db_connection;

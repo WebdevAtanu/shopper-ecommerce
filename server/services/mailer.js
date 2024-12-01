@@ -1,28 +1,31 @@
 import nodemailer from 'nodemailer';
+import crypto from 'crypto';
 
-async function mailSender() {
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    auth: {
-      user: 'keegan.ryan72@ethereal.email',
-      pass: '5maBTvPewM43kSt7PE'
+async function mailSender(receiver) {
+    let OTP = crypto.randomInt(100000, 1000000);
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+        }
+    });
+
+    const mailOptions = {
+        from: process.env.MAIL_USER,
+        to: receiver,
+        subject: 'OTP for Shopper registration',
+        text: `Your OTP is ${OTP}`,
+        html: `<p>Your One Time Passwor is: <strong>${OTP}</strong></p>`
+    };
+
+    try {
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Email sent: ' + info.response);
+    } catch (error) {
+        console.error('Error sending email: ', error);
     }
-  });
-
-  const mailOptions = {
-    from: 'dayton.bashirian97@ethereal.email',
-    to: '',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
-  };
-
-  try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent: ' + info.response);
-  } catch (error) {
-    console.error('Error sending email: ', error);
-  }
+    return OTP;
 }
 
-mailSender();
+export default mailSender;

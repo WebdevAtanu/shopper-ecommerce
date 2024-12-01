@@ -1,12 +1,12 @@
 import express from 'express';
-import {userRegister,userLogin,userDetails,userLogout} from '../controllers/user.controller.js';
-import {userAuth} from '../middleware/userAuth.js'
+import {userRegister,userVerify,userLogin,userDetails,userLogout} from '../controllers/user.controller.js';
+import {userAuth} from '../middleware/auth.js'
 
+const user_route=express.Router();
+user_route.post('/register',userRegister);
+user_route.post('/register/verify',userVerify);
+user_route.post('/login',userLogin);
+user_route.get('/details',userAuth,userDetails);
+user_route.get('/logout',userLogout);
 
-const userRouter=express.Router();
-userRouter.post('/register',userRegister);
-userRouter.post('/login',userLogin);
-userRouter.get('/details',userAuth,userDetails);
-userRouter.get('/logout',userLogout);
-
-export default userRouter;
+export default user_route;
