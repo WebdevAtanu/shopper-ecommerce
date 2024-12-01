@@ -50,7 +50,7 @@ export default function SignupForm() {
                 .then(res=>{
                   toast(res.data.message);
                   setLoad(false);
-                  setOtp(0);
+                  setOtp("");
                   setFlag(false);
                   dispatch({type:'stateTrue'});
                 })
@@ -58,7 +58,7 @@ export default function SignupForm() {
                   console.log(err);
                   toast('invalid otp');
                   setLoad(false);
-                  setOtp(0);
+                  setOtp("");
                 })
                 reset();
             }
