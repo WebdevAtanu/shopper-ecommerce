@@ -13,7 +13,7 @@ export default function SignupForm() {
   const [flag,setFlag]=useState(false);
   const [show,setShow]=useState(false);
   const [userData, setUserData]=useState({});
-  const otp=useRef<string>();
+  const otp=useRef<HTMLInputElement | null>(null);
   const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
 
