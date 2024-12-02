@@ -44,7 +44,7 @@ export default function SignupForm() {
       const otpHandler = (e:any) => {
         e.preventDefault();
                 setLoad(true);
-                axios.post(`${import.meta.env.VITE_BACKEND}/api/user/register/verify`,{...userData,valid_otp:otp.current.value},{
+                axios.post(`${import.meta.env.VITE_BACKEND}/api/user/register/verify`,{...userData,valid_otp:otp},{
                   headers:{
                     'content-type':'application/json'
                   },
