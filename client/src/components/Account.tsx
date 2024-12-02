@@ -6,6 +6,13 @@ import { useDispatch,useSelector } from 'react-redux';
 function Account() {
 	const dispatch=useDispatch();
 	const userData=useSelector((state:any)=>state.userReducer);
+
+// ====================================user edit handler================================================
+	const userEditor=()=>{
+		toast('update will be added soon');
+	}
+	
+// ====================================user logout handler================================================
 	const logoutHandler=()=>{
 		axios.get(`${import.meta.env.VITE_BACKEND}/api/user/logout`,{withCredentials:true})
 		.then(res=>{
@@ -15,9 +22,6 @@ function Account() {
 	})
 	}
 
-	const userEditor=()=>{
-		toast('update will be added soon');
-	}
 	return (
 		<>
 		<div className="flex justify-between items-center">

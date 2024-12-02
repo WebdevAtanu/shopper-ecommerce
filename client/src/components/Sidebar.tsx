@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import fetchData from '../api_data/fetchData';
 import {useDispatch} from 'react-redux';
 
-// ===================fetching product keys===================
+// ====================================product key fetch handler================================================
 const dataFetch = async (setGroupKeys:any) => {
   try {
     const { groupedData }:any = await fetchData();
@@ -18,9 +18,9 @@ function Sidebar() {
   const dispatch=useDispatch();
   const [word,setWord]=useState('');
 
+// ====================================mount keys handler================================================
   useEffect(() => {
     let isMounted = true;
-
     const fetchDataAndSetState = async () => {
       await dataFetch((keys:any) => {
         if (isMounted) {
@@ -28,20 +28,18 @@ function Sidebar() {
         }
       });
     };
-
     fetchDataAndSetState();
-
     return () => {
       isMounted = false;
     };
   }, []);
 
-// ===================option handler===================
+// ====================================option change handler================================================
   const optionHandler= (e:any)=>{
     dispatch({type:'optionChange',payload:e.target.value});
   }
 
-// ===================search function===================
+// ====================================search handler================================================
   const searchHandler=()=>{
     if(word==null || word==''){
       dispatch({type:'searchWord',payload:""})

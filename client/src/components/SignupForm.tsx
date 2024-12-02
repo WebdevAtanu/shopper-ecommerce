@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useRef} from 'react';
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,10 +13,12 @@ export default function SignupForm() {
   const [flag,setFlag]=useState(false);
   const [show,setShow]=useState(false);
   const [userData, setUserData]=useState({});
-  const [otp,setOtp]=useState("");
+  const otp=useRef();
   const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
-    const formData = (data:any) => {
+
+// ====================================register form handler================================================
+    const formHandler = (data:any) => {
                 setLoad(true);
                 setUserData(data);
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/user/register`,data,{
@@ -32,16 +34,17 @@ export default function SignupForm() {
                 })
                 .catch(err=>{
                   console.log(err);
-                  toast('Signup failed- email already exists');
+                  toast('Signup failed! email already exist');
                   setLoad(false);
                 })
                 reset();
             }
 
-      const otpData = (e:any) => {
+// ====================================otp validation handler================================================
+      const otpHandler = (e:any) => {
         e.preventDefault();
                 setLoad(true);
-                axios.post(`${import.meta.env.VITE_BACKEND}/api/user/register/verify`,{...userData,valid_otp:otp},{
+                axios.post(`${import.meta.env.VITE_BACKEND}/api/user/register/verify`,{...userData,valid_otp:otp.current.value},{
                   headers:{
                     'content-type':'application/json'
                   },
@@ -50,7 +53,7 @@ export default function SignupForm() {
                 .then(res=>{
                   toast(res.data.message);
                   setLoad(false);
-                  setOtp("");
+                  otp.current.value='';
                   setFlag(false);
                   dispatch({type:'stateTrue'});
                 })
@@ -58,7 +61,7 @@ export default function SignupForm() {
                   console.log(err);
                   toast('invalid otp');
                   setLoad(false);
-                  setOtp("");
+                  otp.current.value='';
                 })
                 reset();
             }
@@ -68,11 +71,11 @@ export default function SignupForm() {
       <div className="hero-content flex-col lg:flex-row-reverse">
         {
           flag?
-          <form onSubmit={otpData}>
+          <form onSubmit={otpHandler}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="grid w-full items-center gap-1">
             <label htmlFor="otp">Enter the 6 digit OTP</label>
-            <Input type="number" id="otp" placeholder="000000" value={otp} onChange={e=>setOtp(e.target.value)}/>
+            <Input type="number" id="otp" placeholder="000000" ref={otp}/>
           </div>
           </div>
           <div className="mt-6">
@@ -82,7 +85,7 @@ export default function SignupForm() {
           </div>
         </form>
         :
-        <form onSubmit={handleSubmit(formData)}>
+        <form onSubmit={handleSubmit(formHandler)}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="grid w-full items-center gap-1">
             <label htmlFor="name">Name {errors.name && <span className='text-sm text-red-500'>{typeof errors.name.message === 'string' ? errors.name.message : 'Invalid email'}</span>}</label>
@@ -155,9 +158,7 @@ export default function SignupForm() {
           }
           </div>
         </form>
-      }
-
-        
+      }  
       </div>
     </div>
   );

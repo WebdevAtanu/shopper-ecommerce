@@ -16,7 +16,7 @@ async function mailSender(receiver) {
         to: receiver,
         subject: 'OTP for Shopper registration',
         text: `Your OTP is ${OTP}`,
-        html: `<p>Your One Time Passwor is: <strong>${OTP}</strong></p>`
+        html: `<p>Your One Time Password is: <strong>${OTP}</strong></p>`
     };
 
     try {

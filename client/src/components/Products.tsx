@@ -15,8 +15,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
-
-// Function for getting the return values from fetchData.js
+// ====================================product data fetch handler================================================
 async function dataFetch(setGroupProduct:any,setAllProduct:any,setChunkProduct:any) {
   try {
     const { groupedData, allData, chunkData}:any = await fetchData();
@@ -47,7 +46,6 @@ function Products() {
       scrollTo(0,0);
     },[page])
 
-  //handle category change==================================
   useEffect(() => {
         if (option.category != 'all') {
             setSelected(option.category);
@@ -57,8 +55,7 @@ function Products() {
         }
     }, [option]);
 
-//handle search change==================================
-    useEffect(() => {
+  useEffect(() => {
         if (word.search=="") {
             setFlag(0);
         }
@@ -68,9 +65,8 @@ function Products() {
         setFlag(2);
         }
     }, [word]);
-
-//card renders====================================   
-    const renderProducts = (items:any) => items.map((item:any) => (
+ 
+  const renderProducts = (items:any) => items.map((item:any) => (
     <div key={item.id} className='border border-gray-400 py-3 flex flex-col justify-between bg-white'>
       <Link to='/product' state={item}>
       <ProductCard image={item.image}
@@ -82,7 +78,7 @@ function Products() {
       </Link>
       <ProductButton/>
       </div>
-      ));
+    ));
 
     return (
     <>
@@ -93,7 +89,7 @@ function Products() {
         <div className='col-span-4'>
           <div className="p-2 grid grid-cols-2 md:grid-cols-5 gap-1 bg-gray-100">
             {
-            flag==0 ? renderProducts(chunkProduct[page] || []) : flag==1? renderProducts(groupProduct[selected] || []): flag==2? searchProduct.length!=0 ?renderProducts(searchProduct):<h1 className='text-center col-span-4'>No product found</h1>:<h1>Something Wents Wrong!!</h1>
+            flag==0 ? renderProducts(chunkProduct[page] || []) : flag==1? renderProducts(groupProduct[selected] || []): flag==2? searchProduct.length!=0 ?renderProducts(searchProduct):<div className='col-span-5 flex justify-center items-center'><img src="noproduct.png" alt="" className=''/></div>:<h1>Something Wents Wrong!!</h1>
             }
           </div>
         </div>

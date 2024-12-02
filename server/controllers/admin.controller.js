@@ -6,23 +6,22 @@ import {adminCookie} from '../utils/cookies.js'
 export const adminLogin= async (req,res)=>{
 	try{
 		const {email,password}=req.body;
-		const findAdmin= await admin.findOne({email});
-		if(!findAdmin){
+		const find_admin= await admin.findOne({email});
+		if(!find_admin){
 			return res.status(400).json({
 				message:'invalid credential'
 			})
 		}
-		adminCookie(process.env.JWT_SECRET,findAdmin,res,`admin ${findAdmin.name} logged in`);
-
+		adminCookie(process.env.JWT_SECRET,find_admin,res,`admin ${find_admin.name} logged in`);
 	}
 	catch(error){
 		res.send(500).json({
-			message:'server problem'
+			message:'server error'
 		})
 	}
 }
 
-// ====================================admin logout================================================
+// ====================================admin details================================================
 export const adminDetails=(req,res)=>{
 	res.status(201).json({
         name: req.admin_details.name,
@@ -37,6 +36,6 @@ export const adminLogout = (req, res) => {
             expires: new Date(Date.now())
         })
         .json({
-            message: 'admin log out'
+            message: 'admin logged out'
         })
 }

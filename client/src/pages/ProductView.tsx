@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/breadcrumb"
 
 
-
 function ProductView() {
 	const location=useLocation();
 	const data=location.state;
