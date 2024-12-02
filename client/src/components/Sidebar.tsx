@@ -2,6 +2,18 @@ import { useState, useEffect } from 'react';
 import fetchData from '../api_data/fetchData';
 import {useDispatch} from 'react-redux';
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+
+
 // ====================================product key fetch handler================================================
 const dataFetch = async (setGroupKeys:any) => {
   try {
@@ -35,8 +47,8 @@ function Sidebar() {
   }, []);
 
 // ====================================option change handler================================================
-  const optionHandler= (e:any)=>{
-    dispatch({type:'optionChange',payload:e.target.value});
+  const optionHandler= (value:any)=>{
+    dispatch({type:'optionChange',payload:value});
   }
 
 // ====================================search handler================================================
@@ -51,16 +63,22 @@ function Sidebar() {
 
   return (
     <div className='flex items-center justify-end gap-3 p-3 group'>
-      <select className='p-1 h-full outline-0 bg-white border border-black' onChange={(e)=>optionHandler(e)}>
-        <option value='all'>all products</option>
+    <Select onValueChange={(value) => optionHandler(value)}>
+      <SelectTrigger className="w-[150px]">
+        <SelectValue placeholder="Select Category" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+        <SelectItem value="all">all products</SelectItem>
+          <SelectLabel>Featured Products</SelectLabel>
         {groupKeys.map((item, index) => (
-        <option key={index} value={item}>
-          {item}
-        </option>
+        <SelectItem key={index} value={item}>{item}</SelectItem>
         ))}
-      </select>
-      <div className="flex border border-black gap-1 px-3 py-1">
-        <input type="text" placeholder='Search product' className='outline-0 border-r' onChange={(e)=>setWord(e.target.value)}/>
+    </SelectGroup>
+    </SelectContent>
+    </Select>
+      <div className="flex border border-black rounded-md gap-1 px-3 py-1">
+        <input type="text" placeholder='Search Product' className='outline-0 border-r' onChange={(e)=>setWord(e.target.value)}/>
         <button onClick={searchHandler} className='px-1 outline-0 group-hover:text-blue-800'><i className="bi bi-search"></i></button>
       </div>
     </div>
