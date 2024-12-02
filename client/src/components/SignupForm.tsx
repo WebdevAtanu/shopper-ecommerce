@@ -1,4 +1,4 @@
-import {useState,useRef} from 'react';
+import {useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,7 +13,7 @@ export default function SignupForm() {
   const [flag,setFlag]=useState(false);
   const [show,setShow]=useState(false);
   const [userData, setUserData]=useState({});
-  const otp=useRef<string>('');
+  const [otp, setOtp]=useState('');
   const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
 
@@ -53,7 +53,7 @@ export default function SignupForm() {
                 .then(res=>{
                   toast(res.data.message);
                   setLoad(false);
-                  otp.current.value='';
+                  setOtp('');
                   setFlag(false);
                   dispatch({type:'stateTrue'});
                 })
@@ -61,7 +61,7 @@ export default function SignupForm() {
                   console.log(err);
                   toast('invalid otp');
                   setLoad(false);
-                  otp.current.value='';
+                  setOtp('');
                 })
                 reset();
             }
@@ -75,7 +75,7 @@ export default function SignupForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="grid w-full items-center gap-1">
             <label htmlFor="otp">Enter the 6 digit OTP</label>
-            <Input type="number" id="otp" placeholder="000000" ref={otp}/>
+            <Input type="number" id="otp" placeholder="000000" value={otp} onChange={e=>setOtp(e.target.value)}/>
           </div>
           </div>
           <div className="mt-6">
