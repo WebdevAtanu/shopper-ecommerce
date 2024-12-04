@@ -2,6 +2,7 @@ import {useEffect} from 'react'
 import {useLocation} from 'react-router-dom';
 import ProductButton from '@/components/ProductButton';
 import { Link } from 'react-router-dom';
+import MainNavigation from '@/components/MainNavigation';
 
 import {
   Breadcrumb,
@@ -20,6 +21,7 @@ function ProductView() {
 	},[])
 	return (
 		<>
+		<MainNavigation/>
 				<div className="p-3">
 				<Breadcrumb>
 		  <BreadcrumbList>

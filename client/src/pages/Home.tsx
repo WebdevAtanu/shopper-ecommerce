@@ -2,8 +2,10 @@ import {useEffect} from 'react';
 import axios from 'axios';
 import { useSelector,useDispatch } from 'react-redux';
 import Sidebar from '@/components/Sidebar';
+import MainNavigation from '@/components/MainNavigation';
 import BannerSlider from '@/components/BannerSlider';
 import Products from '@/components/Products';
+import Footer from '@/components/Footer';
 
 function Home() {
 	const status=useSelector((state:any) =>state.loginReducer)
@@ -23,9 +25,11 @@ function Home() {
   },[status.status]);
 	return (
 		<>
+    <MainNavigation/>
 		<BannerSlider/>
     	<Sidebar/>
 		<Products/>
+    <Footer/>
 		</>
 	)
 }

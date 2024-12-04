@@ -12,6 +12,11 @@ export const adminLogin= async (req,res)=>{
 				message:'invalid credential'
 			})
 		}
+		if(password!=find_admin.password){
+			return res.status(400).json({
+				message:'invalid credential'
+			})
+		}
 		adminCookie(process.env.JWT_SECRET,find_admin,res,`admin ${find_admin.name} logged in`);
 	}
 	catch(error){

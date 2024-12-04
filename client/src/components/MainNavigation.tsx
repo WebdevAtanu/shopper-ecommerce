@@ -72,7 +72,7 @@ function MainNavigation() {
 			 <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Signup</DialogTrigger>
 			  <DialogContent>
 			    <DialogHeader>
-			      <DialogTitle>Create your account</DialogTitle>
+			      <DialogTitle>Account registration</DialogTitle>
 			      <DialogDescription>
 			      </DialogDescription>
 			      <SignupForm/>

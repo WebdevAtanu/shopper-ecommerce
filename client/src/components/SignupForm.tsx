@@ -7,6 +7,13 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import {useDispatch} from 'react-redux';
 
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+
 
 export default function SignupForm() {
   const [load,setLoad]=useState(false);
@@ -63,7 +70,6 @@ export default function SignupForm() {
                   setLoad(false);
                   setOtp('');
                 })
-                reset();
             }
     
   return (
@@ -72,12 +78,17 @@ export default function SignupForm() {
         {
           flag?
           <form onSubmit={otpHandler}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <div className="grid w-full items-center gap-1">
-            <label htmlFor="otp">Enter the 6 digit OTP</label>
-            <Input type="number" id="otp" placeholder="000000" value={otp} onChange={e=>setOtp(e.target.value)}/>
-          </div>
-          </div>
+            <InputOTP maxLength={6}  onChange={value=>setOtp(value)}>
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
+              </InputOTPGroup>
+            </InputOTP>
+            <p className='mt-2'>Enter the 6 digit OTP sent to your email</p>
           <div className="mt-6">
           {
             load?<Button className='w-full' disabled>Please wait...</Button>:<Button className='w-full'>Signup</Button>
