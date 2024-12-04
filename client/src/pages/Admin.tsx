@@ -18,7 +18,7 @@ import {
 function Admin() {
 	const status=useSelector((state:any) =>state.adminReducer)
 	const navigate=useNavigate();
-	const [admin,setAdmin]=useState({})
+	const [admin,setAdmin]=useState([])
 	const [product,setProduct]=useState([])
 	const [menu,setMenu]=useState('table');
 	if(status.status==false){
