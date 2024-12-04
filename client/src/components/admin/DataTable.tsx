@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -20,7 +19,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 
-export default function DataTable ({data,columns}) {
+export default function DataTable ({data,columns}:any) {
   const [sorting, setSorting] = useState<SortingState>([])
   const table = useReactTable({
     data,

@@ -12,7 +12,6 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar"
 
@@ -53,7 +52,7 @@ function Admin() {
 			productDetails();
 		},[])
 
-		const menuHandler=(option)=>{
+		const menuHandler=(option:any)=>{
 			setMenu(option);
 		}
 
@@ -66,8 +65,8 @@ function Admin() {
 				<AvatarFallback>A</AvatarFallback>
 			</Avatar>
 			<div>
-			<h1 className='text-xl'>{admin.name}</h1>
-			<p className='text-sm'>{admin.email}</p>
+			<h1 className='text-xl'>{admin?.name}</h1>
+			<p className='text-sm'>{admin?.email}</p>
 			</div>
 		</div>
 		<div>

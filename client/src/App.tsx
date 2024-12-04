@@ -1,5 +1,4 @@
 import './App.css'
-import MainNavigation from "@/components/MainNavigation"
 import Home from "@/pages/Home";
 import ProductView from "@/pages/ProductView";
 import Admin from "@/pages/Admin";

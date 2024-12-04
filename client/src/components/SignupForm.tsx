@@ -10,7 +10,6 @@ import {useDispatch} from 'react-redux';
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp"
 

@@ -1,4 +1,3 @@
-import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { MoreHorizontal } from "lucide-react"
@@ -6,12 +5,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const editHandler=(data)=>{
+const editHandler=(data:any)=>{
 	console.log(data)
 }
 
@@ -22,7 +19,7 @@ export const Columns = [
   },
   {
     accessorKey: "title",
-    header: ({ column }) => {
+    header: ({ column }:any) => {
       return (
         <Button
           variant="ghost"
@@ -37,7 +34,7 @@ export const Columns = [
   {
     accessorKey: "description",
     header: "Description",
-    cell: (row) => (
+    cell: (row:any) => (
       <p>{row.getValue().slice(0,35)}...</p>
     ),
   },
@@ -55,7 +52,7 @@ export const Columns = [
   },
   {
     accessorKey: "price",
-    cell: ({ row }) => {
+    cell: ({ row }:any) => {
       const amount = parseFloat(row.getValue("price"))
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -77,7 +74,7 @@ export const Columns = [
   {
     accessorKey: "image",
     header: "Image",
-    cell: (row) => (
+    cell: (row:any) => (
       <img
         src={row.getValue()}
         alt="image"
@@ -87,7 +84,7 @@ export const Columns = [
   },
   {
     id: "actions",
-    cell: ({ row }) => {
+    cell: ({ row }:any) => {
       const data = row.original
       return (
         <DropdownMenu>
