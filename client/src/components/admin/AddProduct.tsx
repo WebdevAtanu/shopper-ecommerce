@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react';
+import {useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,7 +9,6 @@ import toast from 'react-hot-toast';
 
 export default function AddProduct() {
   const [load,setLoad]=useState(false);
-  const [productData,setProductData]=useState({});
   const [image,setImage]=useState("image.png");
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
 
