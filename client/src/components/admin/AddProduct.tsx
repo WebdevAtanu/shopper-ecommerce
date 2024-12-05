@@ -15,7 +15,6 @@ export default function AddProduct() {
 // ====================================add product form handler================================================
     const formHandler = (data:any) => {
                 setLoad(true);
-                setProductData(data);
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/product/insert`,data)
                 .then(res=>{
                   toast(res.data.message);
