@@ -37,13 +37,13 @@ export default function SignupForm() {
                   toast(res.data.message);
                   setLoad(false);
                   setFlag(true);
+                  reset();
                 })
                 .catch(err=>{
                   console.log(err);
                   toast('Signup failed! email already exist');
                   setLoad(false);
                 })
-                reset();
             }
 
 // ====================================otp validation handler================================================
@@ -98,7 +98,7 @@ export default function SignupForm() {
         <form onSubmit={handleSubmit(formHandler)}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="name">Name {errors.name && <span className='text-sm text-red-500'>{typeof errors.name.message === 'string' ? errors.name.message : 'Invalid email'}</span>}</label>
+            <label htmlFor="name">Name {errors.name && <span className='text-sm text-red-500'>{typeof errors.name.message === 'string' ? errors.name.message : 'Invalid'}</span>}</label>
             <Input type="text" id="name" placeholder="John Doe" {...register("name", 
               { required:'name is required',
               minLength:{
@@ -108,7 +108,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="number">Phone {errors.phone && <span className='text-sm text-red-500'>{typeof errors.phone.message === 'string' ? errors.phone.message : 'Invalid email'}</span>}</label>
+            <label htmlFor="number">Phone {errors.phone && <span className='text-sm text-red-500'>{typeof errors.phone.message === 'string' ? errors.phone.message : 'Invalid'}</span>}</label>
             <Input type="number" id="number" placeholder="0000000000" {...register("phone", 
               { required:'phone no is required',
               minLength:{
@@ -122,7 +122,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="email">Email {errors.email && <span className='text-sm text-red-500'>{typeof errors.email.message === 'string' ? errors.email.message : 'Invalid email'}</span>}</label>
+            <label htmlFor="email">Email {errors.email && <span className='text-sm text-red-500'>{typeof errors.email.message === 'string' ? errors.email.message : 'Invalid'}</span>}</label>
             <Input type="email" id="email" placeholder="JohnDoe@gmail.com" {...register("email", 
             { required: 'email is required',
             pattern: {
@@ -133,7 +133,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="password">Create password {errors.password && <span className='text-sm text-red-500'>{typeof errors.password.message === 'string' ? errors.password.message : 'Invalid email'}</span>}</label>
+            <label htmlFor="password">Create password {errors.password && <span className='text-sm text-red-500'>{typeof errors.password.message === 'string' ? errors.password.message : 'Invalid'}</span>}</label>
             <div className="flex items-center border rounded-lg">
             <Input type={show?"text":"password"} className='border-0 focus-visible:ring-transparent' id="password" placeholder="********" {...register("password", 
             { required: 'password is required',
@@ -147,7 +147,7 @@ export default function SignupForm() {
           </div>
 
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="address">Address {errors.address && <span className='text-sm text-red-500'>{typeof errors.address.message === 'string' ? errors.address.message : 'Invalid email'}</span>}</label>
+            <label htmlFor="address">Address {errors.address && <span className='text-sm text-red-500'>{typeof errors.address.message === 'string' ? errors.address.message : 'Invalid'}</span>}</label>
             <Textarea placeholder="Your address here" id="address" className='resize-none' {...register("address",
             { required: 'address is required',
             minLength:{

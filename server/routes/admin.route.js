@@ -5,6 +5,6 @@ import {adminAuth} from '../middleware/auth.js'
 const admin_route = express.Router();
 admin_route.post('/login', adminLogin);
 admin_route.get('/details', adminAuth, adminDetails);
-admin_route.post('/logout', adminLogout);
+admin_route.get('/logout', adminLogout);
 
 export default admin_route

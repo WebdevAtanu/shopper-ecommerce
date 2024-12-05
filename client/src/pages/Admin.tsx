@@ -3,8 +3,10 @@ import {useNavigate} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import axios from 'axios';
 import DataTable from '@/components/admin/DataTable';
+import AddProduct from '@/components/admin/AddProduct';
 import {Columns} from '@/components/admin/Column';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import toast from 'react-hot-toast';
 
 import {
   Menubar,
@@ -52,8 +54,21 @@ function Admin() {
 			productDetails();
 		},[])
 
+		useEffect(()=>{
+			productDetails();
+		},[menu])
+
 		const menuHandler=(option:any)=>{
 			setMenu(option);
+		}
+
+		const logoutHandler=()=>{
+			axios.get(`${import.meta.env.VITE_BACKEND}/api/admin/logout`,{withCredentials:true})
+			.then(res=>{
+			console.log(res.data.message);
+			navigate('/');
+			toast('logout not working? there is a problem on render server');
+			})
 		}
 
 		return (
@@ -66,20 +81,21 @@ function Admin() {
 			</Avatar>
 			<div>
 			<h1 className='text-xl'>{admin?.name}</h1>
-			<p className='text-sm'>{admin?.email}</p>
 			</div>
 		</div>
 		<div>
 			<Menubar>
 			  <MenubarMenu>
-			    <MenubarTrigger>Menu</MenubarTrigger>
+			    <MenubarTrigger className='cursor-pointer'>Menu</MenubarTrigger>
 			    <MenubarContent>
-			      <MenubarItem onClick={()=>menuHandler('table')}>Table</MenubarItem>
-			      <MenubarItem onClick={()=>menuHandler('chart')}>Charts</MenubarItem>
-			      <MenubarItem onClick={()=>menuHandler('notification')}>Notifications</MenubarItem>
+			      <MenubarItem className='flex gap-2 items-center' onClick={()=>menuHandler('table')}><i className="bi bi-table"></i> Data Table</MenubarItem>
+			      <MenubarItem className='flex gap-2 items-center' onClick={()=>menuHandler('add')}><i className="bi bi-plus-circle"></i> Add Product</MenubarItem>
+			      <MenubarItem className='flex gap-2 items-center' onClick={()=>menuHandler('chart')}><i className="bi bi-bar-chart"></i> Charts</MenubarItem>
 			      <MenubarSeparator />
-			      <MenubarItem onClick={()=>menuHandler('social')}>Social</MenubarItem>
-			      <MenubarItem onClick={()=>menuHandler('contact')}>Contact</MenubarItem>
+			      <MenubarItem className='flex gap-2 items-center' onClick={()=>menuHandler('social')}><i className="bi bi-wechat"></i> Social</MenubarItem>
+			      <MenubarItem className='flex gap-2 items-center' onClick={()=>menuHandler('contact')}><i className="bi bi-person-rolodex"></i> Contact</MenubarItem>
+			      <MenubarSeparator />
+			      <MenubarItem className='flex gap-2 items-center text-red-600' onClick={logoutHandler}><i className="bi bi-power"></i> Logout</MenubarItem>
 			    </MenubarContent>
 			  </MenubarMenu>
 			</Menubar>
@@ -93,8 +109,8 @@ function Admin() {
 			menu=='chart'?
 			<h1>chart</h1>
 			:
-			menu=='notification'?
-			<h1>notification</h1>
+			menu=='add'?
+			<AddProduct/>
 			:
 			menu=='social'?
 			<h1>social</h1>
