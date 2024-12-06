@@ -1,6 +1,5 @@
 import {useEffect} from 'react';
-import axios from 'axios';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import useGetUser from '@/service/getUser'
 import Navigation from '@/components/common/Navigation';
 import Banner from '@/components/common/Banner';

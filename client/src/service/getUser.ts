@@ -9,7 +9,7 @@ export default function useGetUser() {
       const res = await axios.get(`${import.meta.env.VITE_BACKEND}/api/user/details`, { withCredentials: true });
       dispatch({ type: 'userData', payload: res.data });
       dispatch({ type: 'stateTrue' });
-    } catch (err) {
+    } catch (err:any) {
       console.error(err.message);
     }
   };
