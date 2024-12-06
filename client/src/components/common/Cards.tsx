@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-function ProductCard(props:any) {
+function Cards(props:any) {
   return (
     <Card className='h-full group'>
     <div className="w-1/2 m-auto overflow-hidden mb-1">
@@ -29,4 +29,4 @@ function ProductCard(props:any) {
   )
 }
 
-export default ProductCard
+export default Cards

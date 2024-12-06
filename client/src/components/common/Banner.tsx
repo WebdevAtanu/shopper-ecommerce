@@ -2,7 +2,7 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
-function BannerSlider() {
+function Banner() {
 	let banner=[
 	{
 		image:'banner/b1.jpg'
@@ -44,4 +44,4 @@ function BannerSlider() {
 	)
 }
 
-export default BannerSlider
+export default Banner

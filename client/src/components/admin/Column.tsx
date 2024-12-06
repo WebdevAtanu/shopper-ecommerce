@@ -1,16 +1,14 @@
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { MoreHorizontal } from "lucide-react"
+import editProducts from "@/service/editProducts";
+import deleteProducts from "@/service/deleteProducts";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
-const editHandler=(data:any)=>{
-	console.log(data)
-}
 
 export const Columns = [
   {
@@ -95,8 +93,8 @@ export const Columns = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={()=>editHandler(data)}>Edit product details</DropdownMenuItem>
-            <DropdownMenuItem>Delete product</DropdownMenuItem>
+            <DropdownMenuItem onClick={()=>editProducts(data)}>Edit product details</DropdownMenuItem>
+            <DropdownMenuItem onClick={()=>deleteProducts(data)}>Delete product</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

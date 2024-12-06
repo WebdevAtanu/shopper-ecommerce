@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-import AdminLogin from '@/components/AdminLogin';
+import AdminLogin from '@/components/admin/AdminLogin';
 
 function Footer() {
 	return (

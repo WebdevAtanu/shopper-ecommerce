@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import fetchData from '@/api_data/fetchData';
+import getProducts from '@/service/getProducts';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ProductCard from '@/components/ProductCard';
-import ProductButton from '@/components/ProductButton';
-import ProductSkeleton from '@/components/ProductSkeleton';
+import Cards from '@/components/common/Cards';
+import Buttons from '@/components/common/Buttons';
+import Skeletons from '@/components/common/Skeletons';
 
 import {
   Pagination,
@@ -18,7 +18,7 @@ import {
 // ====================================product data fetch handler================================================
 async function dataFetch(setGroupProduct:any,setAllProduct:any,setChunkProduct:any) {
   try {
-    const { groupedData, allData, chunkData}:any = await fetchData();
+    const { groupedData, allData, chunkData}:any = await getProducts();
     setGroupProduct(groupedData);
     setAllProduct(allData);
     setChunkProduct(chunkData);
@@ -69,14 +69,14 @@ function Products() {
   const renderProducts = (items:any) => items.map((item:any) => (
     <div key={item.id} className='border border-gray-400 py-3 flex flex-col justify-between bg-white'>
       <Link to='/product' state={item}>
-      <ProductCard image={item.image}
+      <Cards image={item.image}
         title={item.title}
         description={item.description.slice(0, 50)}
         brand={item.brand}
         price={item.price}
         discount={item.discount}/>
       </Link>
-      <ProductButton/>
+      <Buttons data={item}/>
       </div>
     ));
 
@@ -99,11 +99,12 @@ function Products() {
     <div className='grid gap-2'>
         <div className='col-span-4'>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5 bg-gray-100">
-            <ProductSkeleton/>
-            <ProductSkeleton/>
-            <ProductSkeleton/>
-            <ProductSkeleton/>
-            <ProductSkeleton/>
+            <Skeletons/>
+            <Skeletons/>
+            <Skeletons/>
+            <Skeletons/>
+            <Skeletons/>
+            <Skeletons/>
           </div>
         </div>
       </div>

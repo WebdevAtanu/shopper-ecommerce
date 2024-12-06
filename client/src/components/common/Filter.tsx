@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import fetchData from '../api_data/fetchData';
+import getProducts from '@/service/getProducts';
 import {useDispatch} from 'react-redux';
 
 import {
@@ -17,7 +17,7 @@ import {
 // ====================================product key fetch handler================================================
 const dataFetch = async (setGroupKeys:any) => {
   try {
-    const { groupedData }:any = await fetchData();
+    const { groupedData }:any = await getProducts();
     const groupKeys = Object.keys(groupedData);
     setGroupKeys(groupKeys);
   } catch (error) {
@@ -25,7 +25,7 @@ const dataFetch = async (setGroupKeys:any) => {
   }
 };
 
-function Sidebar() {
+function Filter() {
   const [groupKeys, setGroupKeys] = useState([]);
   const dispatch=useDispatch();
   const [word,setWord]=useState('');
@@ -85,4 +85,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default Filter;

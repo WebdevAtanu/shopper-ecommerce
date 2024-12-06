@@ -1,7 +1,7 @@
 import { Skeleton } from "@/components/ui/skeleton"
 
 
-function ProductSkeleton() {
+function Skeletons() {
 	return (
 		<div className="flex flex-col space-y-3 p-3">
       <Skeleton className="h-16 w-full rounded-xl" />
@@ -16,4 +16,4 @@ function ProductSkeleton() {
 	)
 }
 
-export default ProductSkeleton
+export default Skeletons

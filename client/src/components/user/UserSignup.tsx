@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/input-otp"
 
 
-export default function SignupForm() {
+export default function UserSignup() {
   const [load,setLoad]=useState(false);
   const [flag,setFlag]=useState(false);
   const [show,setShow]=useState(false);

@@ -21,13 +21,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-import LoginForm from '@/components/LoginForm';
-import SignupForm from '@/components/SignupForm';
-import Account from '@/components/Account';
+import LoginForm from '@/components/user/UserLogin';
+import SignupForm from '@/components/user/UserSignup';
+import Account from '@/components/user/UserAccount';
+import Cart from '@/components/user/Cart';
 import {useSelector} from 'react-redux';
 
 
-function MainNavigation() {
+function Navigation() {
 	const status=useSelector((state:any)=>state.loginReducer);
 	const userData=useSelector((state:any)=>state.userReducer);
 	return (
@@ -58,7 +59,7 @@ function MainNavigation() {
 		  <DialogTrigger className='px-3 hover:bg-gray-200 rounded-lg'>Login</DialogTrigger>
 		  <DialogContent>
 		    <DialogHeader>
-		      <DialogTitle>Login</DialogTitle>
+		      <DialogTitle>User login</DialogTitle>
 		      <DialogDescription>
 		      </DialogDescription>
 		        <LoginForm/>
@@ -87,11 +88,11 @@ function MainNavigation() {
       <SheetTrigger className='px-3 hover:bg-gray-200 rounded-lg flex items-center'><i className="bi bi-cart3"></i> <span>cart</span></SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Cart</SheetTitle>
+          <SheetTitle>My cart</SheetTitle>
           <SheetDescription>
-          Description
           </SheetDescription>
         </SheetHeader>
+        <Cart/>
       </SheetContent>
     </Sheet>
 		  </MenubarMenu>
@@ -100,4 +101,4 @@ function MainNavigation() {
 	)
 }
 
-export default MainNavigation
+export default Navigation

@@ -25,13 +25,13 @@ export default function AdminLogin() {
                   setLoad(false);
                   navigate('/admin');
                   dispatch({type:'adminTrue'})
+                  reset();
                 })
                 .catch(err=>{
                   console.log(err);
                   toast('Login failed- invalid credential');
                   setLoad(false);
                 })
-                reset();
             }
   
   return (
@@ -50,9 +50,7 @@ export default function AdminLogin() {
             <Input type="text" id="password" placeholder="admin password" {...register("password", { required: true })}/>
           </div>
           <div className="mt-6">
-          {
-            load?<Button className='w-full' disabled>Please wait...</Button>:<Button className='w-full'>Login</Button>
-          }
+          <Button className="w-full" disabled={load} aria-busy={load} aria-live="polite">{load ? "Please wait..." : "Login"}</Button>
           </div>
         </form>
       </div>

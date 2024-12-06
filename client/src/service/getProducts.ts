@@ -1,7 +1,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 
-async function fetchData() {
+async function getProducts() {
     try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/product/products`);
         const allData = response.data.data;
@@ -13,4 +13,4 @@ async function fetchData() {
     }
 }
 
-export default fetchData;
+export default getProducts;

@@ -6,7 +6,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import {useDispatch} from 'react-redux';
 
-export default function LoginForm() {
+export default function UserLogin() {
   const [load,setLoad]=useState(false);
   const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm();

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap');
-body{
-	font-family: "Lusitana", serif;
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+html,*{
+	font-family: "Lora", serif;
 }

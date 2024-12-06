@@ -24,8 +24,7 @@ export default function AddProduct() {
                 .catch(err=>{
                   console.log(err);
                   setLoad(false);
-                })
-                
+                }) 
             }
     
   return (
@@ -33,7 +32,7 @@ export default function AddProduct() {
   <form onSubmit={handleSubmit(formHandler)}>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="border border-black rounded p-2">
-        <h1 className='underline underline-offset-2'>Basic information</h1>
+        <h1 className='underline underline-offset-2 text-center'>Basic information</h1>
         <div className="flex flex-col gap-3 p-3">
           <div className="grid w-full items-center gap-1">
             <label htmlFor="id">Product ID {errors.id && <span className='text-sm text-red-500'>{typeof errors.id.message === 'string' ? errors.id.message : 'Invalid'}</span>}</label>
@@ -66,7 +65,7 @@ export default function AddProduct() {
         </div>
       </div>
       <div className="border border-black rounded p-2 row-span-2">
-        <h1 className='underline underline-offset-2'>Product details</h1>
+        <h1 className='underline underline-offset-2 text-center'>Product details</h1>
         <div className="flex flex-col gap-3 p-3">
           <div className="grid w-full items-center gap-1">
             <label htmlFor="category">Category {errors.category && <span className='text-sm text-red-500'>{typeof errors.category.message === 'string' ? errors.category.message : 'Invalid'}</span>}</label>
@@ -89,7 +88,7 @@ export default function AddProduct() {
           </div>
           <div className="grid w-full items-center gap-1">
             <label htmlFor="image">Image URL {errors.image && <span className='text-sm text-red-500'>{typeof errors.image.message === 'string' ? errors.image.message : 'Invalid'}</span>}</label>
-            <Input type="text" id="image" placeholder="Enter proper URL of the product image for preview" {...register("image",
+            <Input type="text" id="image" placeholder="Enter proper image URL of the product for preview" {...register("image",
             { required:'is required',
             minLength:{
             value:15,
@@ -97,15 +96,15 @@ export default function AddProduct() {
             }})} onChange={e=>setImage(e.target.value)}/>
           </div>
           <div className="">
-            <img src={image} alt="image preview" className='w-1/4'/>
+            <label htmlFor="image"><img src={image} alt="image preview" className='w-1/4'/></label>
           </div>
         </div>
       </div>
       <div className="border border-black rounded p-2">
-        <h1 className='underline underline-offset-2'>Price & Stock details</h1>
+        <h1 className='underline underline-offset-2 text-center'>Price & Stock details</h1>
         <div className="flex flex-col gap-3 p-3">
           <div className="grid w-full items-center gap-1">
-            <label htmlFor="title">Price {errors.price && <span className='text-sm text-red-500'>{typeof errors.price.message === 'string' ? errors.price.message : 'Invalid'}</span>}</label>
+            <label htmlFor="price">Price {errors.price && <span className='text-sm text-red-500'>{typeof errors.price.message === 'string' ? errors.price.message : 'Invalid'}</span>}</label>
             <Input type="number" id="price" placeholder="product price" {...register("price",
             { required:'is required'})}/>
           </div>
