@@ -5,7 +5,7 @@ import Admin from "@/pages/Admin";
 import {Provider} from 'react-redux';
 import Store from '@/redux/store/Store';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "@/components/ui/sonner"
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     </Provider>
-    <Toaster />
+    <Toaster position="top-center" expand={false}/>
     </>
   )
 }

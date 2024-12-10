@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 import {useDispatch} from 'react-redux';
 
 export default function UserLogin() {
@@ -19,16 +19,16 @@ export default function UserLogin() {
                   withCredentials:true
                 })
                 .then(res=>{
-                  toast(res.data.message);
+                  toast.success(res.data.message);
                   setLoad(false);
                   dispatch({type:'stateTrue'});
+                  reset();
                 })
                 .catch(err=>{
                   console.log(err);
-                  toast('Login failed- invalid credential');
+                  toast.error('Login failed- invalid credential');
                   setLoad(false);
                 })
-                reset();
             }
   
   return (

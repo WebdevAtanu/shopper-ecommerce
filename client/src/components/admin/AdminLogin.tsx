@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 
@@ -21,7 +21,7 @@ export default function AdminLogin() {
                   withCredentials:true
                 })
                 .then(res=>{
-                  toast(res.data.message);
+                  toast.success(res.data.message);
                   setLoad(false);
                   navigate('/admin');
                   dispatch({type:'adminTrue'})
@@ -29,7 +29,7 @@ export default function AdminLogin() {
                 })
                 .catch(err=>{
                   console.log(err);
-                  toast('Login failed- invalid credential');
+                  toast.error('Login failed- invalid credential');
                   setLoad(false);
                 })
             }

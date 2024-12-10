@@ -6,7 +6,7 @@ import DataTable from '@/components/admin/DataTable';
 import AddProduct from '@/components/admin/AddProduct';
 import {Columns} from '@/components/admin/Column';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 
 import {
   Menubar,
@@ -67,7 +67,7 @@ function Admin() {
 			.then(res=>{
 			console.log(res.data.message);
 			navigate('/');
-			toast('logout not working? there is a problem on render server');
+			toast.warning('logout not working? there is a problem on render server');
 			})
 		}
 

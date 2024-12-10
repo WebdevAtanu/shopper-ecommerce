@@ -5,6 +5,7 @@ import cors from 'cors';
 import user_route from './routes/user.route.js';
 import product_route from './routes/product.route.js';
 import admin_route from './routes/admin.route.js';
+import cart_route from './routes/cart.route.js';
 
 config({
 	path:'./config.env'
@@ -23,5 +24,6 @@ app.use(express.urlencoded({extended:true}));
 
 app.use('/api/user',user_route);
 app.use('/api/product',product_route);
-app.use('/api/admin',admin_route)
+app.use('/api/admin',admin_route);
+app.use('/api/cart',cart_route);
 export default app;

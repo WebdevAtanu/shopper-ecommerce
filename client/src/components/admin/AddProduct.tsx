@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 
 
 export default function AddProduct() {
@@ -17,7 +17,7 @@ export default function AddProduct() {
                 setLoad(true);
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/product/insert`,data)
                 .then(res=>{
-                  toast(res.data.message);
+                  toast.success(res.data.message);
                   setLoad(false);
                   reset();
                 })

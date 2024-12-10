@@ -62,25 +62,27 @@ function Filter() {
   }
 
   return (
-    <div className='flex items-center justify-end gap-3 p-3 group'>
-    <Select onValueChange={(value) => optionHandler(value)}>
-      <SelectTrigger className="w-[150px]">
-        <SelectValue placeholder="Select Category" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-        <SelectItem value="all">all products</SelectItem>
-          <SelectLabel>Featured Products</SelectLabel>
-        {groupKeys.map((item, index) => (
-        <SelectItem key={index} value={item}>{item}</SelectItem>
-        ))}
-    </SelectGroup>
-    </SelectContent>
-    </Select>
-      <div className="flex border border-black rounded-md gap-1 px-3 py-1">
-        <input type="text" placeholder='Search Product' className='outline-0 border-r' onChange={(e)=>setWord(e.target.value)}/>
+    <div className='grid grid-cols-1 md:grid-cols-4 gap-2 p-2 justify-end'>
+      <div></div>
+      <div></div>
+      <div className="flex border border-black rounded-md gap-1 px-3 py-1 group">
+        <input type="text" placeholder='Search Product' className='outline-0 border-r w-full' onChange={(e)=>setWord(e.target.value)}/>
         <button onClick={searchHandler} className='px-1 outline-0 group-hover:text-blue-800'><i className="bi bi-search"></i></button>
       </div>
+      <Select onValueChange={(value) => optionHandler(value)}>
+        <SelectTrigger className="w-full border border-black">
+          <SelectValue placeholder="Select Category" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+            <SelectItem value="all">all products</SelectItem>
+          <SelectLabel>Featured Products</SelectLabel>
+          {groupKeys.map((item, index) => (
+        <SelectItem key={index} value={item}>{item}</SelectItem>
+        ))}
+      </SelectGroup>
+    </SelectContent>
+    </Select>
     </div>
   );
 }

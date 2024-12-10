@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 import {useDispatch} from 'react-redux';
 
 import {
@@ -34,14 +34,14 @@ export default function UserSignup() {
                   withCredentials:true
                 })
                 .then(res=>{
-                  toast(res.data.message);
+                  toast.success(res.data.message);
                   setLoad(false);
                   setFlag(true);
                   reset();
                 })
                 .catch(err=>{
                   console.log(err);
-                  toast('Signup failed! email already exist');
+                  toast.error('Signup failed! email already exist');
                   setLoad(false);
                 })
             }
@@ -57,7 +57,7 @@ export default function UserSignup() {
                   withCredentials:true
                 })
                 .then(res=>{
-                  toast(res.data.message);
+                  toast.success(res.data.message);
                   setLoad(false);
                   setOtp('');
                   setFlag(false);
@@ -65,7 +65,7 @@ export default function UserSignup() {
                 })
                 .catch(err=>{
                   console.log(err);
-                  toast('invalid otp');
+                  toast.error('invalid otp');
                   setLoad(false);
                   setOtp('');
                 })
