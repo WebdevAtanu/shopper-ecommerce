@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Button } from "@/components/ui/button";
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import Skeletons from "@/components/common/Skeletons";
 
 function Cart() {
 	const [carts,setCarts]=useState({});
@@ -16,12 +15,12 @@ function Cart() {
 		axios.get(`${import.meta.env.VITE_BACKEND}/api/cart/mycart`,{withCredentials:true})
 	    .then(res=>{
 	      	setCarts(res.data);
-	      	const total = res.data.cart.reduce((acc, current) => {
+	      	const total = res.data.cart.reduce((acc:any, current:any) => {
     			return acc + current.price;
 				}, 0); // Initial value of the accumulator is 0
 			setTotalPrice(total);
 
-			const discount = res.data.cart.reduce((acc, current) => {
+			const discount = res.data.cart.reduce((acc:any, current:any) => {
     			return acc + ((current.price*100)/(current.price/(1-(current.discount/100))));
 				}, 0); // Initial value of the accumulator is 0
 			setTotalDiscount(discount);
@@ -40,12 +39,12 @@ function Cart() {
 		<div className='h-full overflow-auto p-3'>
 			<p className='text-sm mb-5'>Deliver to: <span className='font-bold'>{userData.data.name}, {userData.data.address}</span></p>
 			{
-			!carts.cart?
+			!carts?.cart?
 			<img src="nocart.png" alt=""/>
 			:
 			<>
 			{
-			carts.cart?.map((item,i)=>{
+			carts?.cart?.map((item:any,i:any)=>{
 			return(
 			<div key={i} className='mb-6'>
 				<Link to='/product' state={item}>
@@ -77,7 +76,7 @@ function Cart() {
 		<div className="mb-5">
 		<p className='font-bold'>Price details</p>
 		<div className='flex justify-between mt-1 mb-2'>
-			<p>Price ({carts.cart?.length} items)</p>
+			<p>Price ({carts?.cart?.length} items)</p>
 			<p><i className="bi bi-currency-rupee"></i>{totalPrice}</p>
 		</div>
 		<div className='flex justify-between mt-1 mb-2'>

@@ -14,6 +14,7 @@ function Buttons({data}:any) {
                   withCredentials:true
                 })
                 .then(res=>{
+                  console.log(res);
                   toast.success("Cart has been added", {
                   description: data.title,
                   });
