@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 function Cart() {
-	const [carts,setCarts]=useState({});
+	const [carts,setCarts]=useState<any>({});
 	const [totalPrice,setTotalPrice]=useState(0);
 	const [totalDiscount,setTotalDiscount]=useState(0);
 	const userData=useSelector((state:any)=>state.userReducer);
