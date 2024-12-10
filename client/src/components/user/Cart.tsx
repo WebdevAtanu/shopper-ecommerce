@@ -39,12 +39,12 @@ function Cart() {
 		<div className='h-full overflow-auto p-3'>
 			<p className='text-sm mb-5'>Deliver to: <span className='font-bold'>{userData.data.name}, {userData.data.address}</span></p>
 			{
-			!carts?.cart?
+			!(carts?.cart)?
 			<img src="nocart.png" alt=""/>
 			:
 			<>
 			{
-			carts?.cart?.map((item:any,i:any)=>{
+			(carts?.cart).map((item:any,i:any)=>{
 			return(
 			<div key={i} className='mb-6'>
 				<Link to='/product' state={item}>
@@ -76,7 +76,7 @@ function Cart() {
 		<div className="mb-5">
 		<p className='font-bold'>Price details</p>
 		<div className='flex justify-between mt-1 mb-2'>
-			<p>Price ({carts?.cart?.length} items)</p>
+			<p>Price ({(carts?.cart).length} items)</p>
 			<p><i className="bi bi-currency-rupee"></i>{totalPrice}</p>
 		</div>
 		<div className='flex justify-between mt-1 mb-2'>
