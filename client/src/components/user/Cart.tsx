@@ -112,7 +112,7 @@ function Cart() {
 		:
 		<div className="flex flex-col item-center justify-center">
 			<p className='text-center'>User not logged in</p>
-			<img src="nouser.png" alt=""/>
+			<img src="nouser.jpeg" alt=""/>
 		</div>
 		}
 		</>
