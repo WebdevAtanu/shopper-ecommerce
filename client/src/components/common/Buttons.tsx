@@ -2,11 +2,20 @@ import {useState} from 'react';
 import { Button } from "@/components/ui/button";
 import axios from 'axios';
 import { toast } from "sonner"
+import {useSelector} from 'react-redux';
 
 function Buttons({data}:any) {
 	const [load,setLoad]=useState(false);
+  const status=useSelector((state:any)=>state.loginReducer);
+
+// ====================================add to cart================================================
 	const addToCart = () => {
-		setLoad(true);
+		            setLoad(true);
+                if(!status.status){
+                  toast.warning('you have to login first');
+                  setLoad(false);
+                  return;
+                }
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/cart/add`,{data:data},{
                   headers:{
                     'content-type':'application/json'
@@ -14,7 +23,6 @@ function Buttons({data}:any) {
                   withCredentials:true
                 })
                 .then(res=>{
-                  console.log(res);
                   toast.success("Cart has been added", {
                   description: data.title,
                   });

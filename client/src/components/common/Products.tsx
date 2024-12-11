@@ -98,6 +98,7 @@ function Products() {
     :
     <div className='grid gap-2'>
         <div className='col-span-4'>
+        <h1 className='text-center p-3 bg-red-800 text-white'>Initial loading is slow because of free render hosting</h1>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5 bg-gray-100">
             <Skeletons/>
             <Skeletons/>

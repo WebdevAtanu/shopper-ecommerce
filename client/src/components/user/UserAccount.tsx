@@ -26,7 +26,7 @@ function UserAccount() {
 	return (
 		<>
 		<div className="flex justify-between items-center">
-			<div className='flex items-center'>
+			<div className='flex gap-2 items-center'>
 				<Avatar>
 				<AvatarImage src="avatar.png" />
 				<AvatarFallback>A</AvatarFallback>
@@ -44,10 +44,10 @@ function UserAccount() {
 		<i className="bi bi-pencil-square cursor-pointer hover:text-orange-700 scale-110" onClick={userEditor}></i>
 		</div>
 		<div className='grid grid-cols-2 gap-2'>
-			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-blue-500'><i className="bi bi-box-seam"></i> Orders</p>
-			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-red-500'><i className="bi bi-bag-heart"></i> Wishlist</p>
-			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-yellow-500'><i className="bi bi-gift"></i> Coupons</p>
-			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-green-500'><i className="bi bi-headset"></i> Help</p>
+			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-blue-800 hover:text-white'><i className="bi bi-box-seam"></i> Orders</p>
+			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-red-800 hover:text-white'><i className="bi bi-bag-heart"></i> Wishlist</p>
+			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-yellow-800 hover:text-white'><i className="bi bi-gift"></i> Coupons</p>
+			<p className='border border-black p-1 rounded-lg cursor-pointer hover:bg-green-800 hover:text-white'><i className="bi bi-headset"></i> Help</p>
 		</div> 
 		</>
 	)

@@ -8,6 +8,7 @@ import {useDispatch} from 'react-redux';
 
 export default function UserLogin() {
   const [load,setLoad]=useState(false);
+  const [show,setShow]=useState(false);
   const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
     const onSubmit = (data:any) => {
@@ -39,12 +40,17 @@ export default function UserLogin() {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid w-full items-center gap-1 mt-4">
-            <label htmlFor="email">Email {errors.email && <span className='text-sm text-red-500'> is required</span>}</label>
+            <label htmlFor="email">Email {errors.email && <span className='text-xs text-red-500'> is required</span>}</label>
             <Input type="text" id="email" placeholder="JohnDoe@gmail.com" {...register("email", { required: true })}/>
           </div>
-          <div className="grid w-full items-center gap-1 mt-4">
-            <label htmlFor="email">Password {errors.password && <span className='text-sm text-red-500'> is required</span>}</label>
-            <Input type="text" id="password" placeholder="********" {...register("password", { required: true })}/>
+
+          <div className="grid w-full items-center gap-1">
+            <label htmlFor="email">Password {errors.password && <span className='text-xs text-red-500'> is required</span>}</label>
+            <div className="flex items-center border rounded-lg">
+            <Input type={show?"text":"password"} className='border-0 focus-visible:ring-transparent' id="password" placeholder="your password" {...register("password", 
+            { required: true})}/>
+            <i className={`mr-3 ${show?"bi-eye-slash":"bi bi-eye"} `} onClick={()=>setShow(!show)} ></i>
+          </div>
           </div>
           <div className="mt-6">
           {

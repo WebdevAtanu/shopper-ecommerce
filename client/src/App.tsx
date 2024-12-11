@@ -12,7 +12,6 @@ function App() {
     <>
     <Provider store={Store}>
     <BrowserRouter>
-    <h1 className='text-center p-1 bg-red-200'>Initial loading is slow because of free render hosting</h1>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/product' element={<ProductView/>}/>
