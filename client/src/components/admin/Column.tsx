@@ -7,7 +7,6 @@ import Deletor from "@/components/admin/Deletor"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 

@@ -7,7 +7,7 @@ import axios from 'axios';
 import { toast } from "sonner";
 import {useDispatch} from 'react-redux';
 
-export default function Editor({data}){
+export default function Editor({data}:any){
   const [load,setLoad]=useState(false);
   const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm({

@@ -1,7 +1,4 @@
 import {useState} from 'react';
-import { useForm } from "react-hook-form";
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import axios from 'axios';
 import { toast } from "sonner";
@@ -10,12 +7,11 @@ import {useDispatch} from 'react-redux';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableRow,
 } from "@/components/ui/table"
 
-export default function Deletor({data}){
+export default function Deletor({data}:any){
   const [load,setLoad]=useState(false);
   const dispatch=useDispatch();
 
