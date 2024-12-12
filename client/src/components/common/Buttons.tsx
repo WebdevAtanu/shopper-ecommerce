@@ -33,11 +33,20 @@ function Buttons({data}:any) {
                   console.log(err.message);
                 })
             }
+  const buyNow = () => {
+                setLoad(true);
+                if(!status.status){
+                  toast.warning('you have to login first');
+                  setLoad(false);
+                  return;
+                }
+                toast.info('available soon');
+            }
 
 	return (
 		<div className='px-3 flex justify-between gap-2'>
 		<Button variant="outline" className="w-full p-0" onClick={addToCart} disabled={load} aria-busy={load} aria-live="polite">{load ? "Please wait..." : "Add to cart"}</Button>
-			<Button className='w-full p-0' onClick={()=>console.log(data)}>Buy now</Button>
+			<Button className='w-full p-0' onClick={buyNow}>Buy now</Button>
 		</div>
 	)
 }

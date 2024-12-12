@@ -11,7 +11,7 @@ export default function UserLogin() {
   const [show,setShow]=useState(false);
   const dispatch=useDispatch();
   const { register, handleSubmit,reset,formState: { errors } } = useForm();
-    const onSubmit = (data:any) => {
+  const onSubmit = (data:any) => {
                 setLoad(true);
                 axios.post(`${import.meta.env.VITE_BACKEND}/api/user/login`,data,{
                   headers:{
@@ -40,22 +40,21 @@ export default function UserLogin() {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid w-full items-center gap-1 mt-4">
-            <label htmlFor="email">Email {errors.email && <span className='text-xs text-red-500'> is required</span>}</label>
+            <label htmlFor="email">Email {errors.email && <span className='text-xs text-red-500'>email is required</span>}</label>
             <Input type="text" id="email" placeholder="JohnDoe@gmail.com" {...register("email", { required: true })}/>
           </div>
-
-          <div className="grid w-full items-center gap-1">
-            <label htmlFor="email">Password {errors.password && <span className='text-xs text-red-500'> is required</span>}</label>
+          <div className="grid w-full items-center gap-1 mt-3">
+            <label htmlFor="email">Password {errors.password && <span className='text-xs text-red-500'>password is required</span>}</label>
             <div className="flex items-center border rounded-lg">
-            <Input type={show?"text":"password"} className='border-0 focus-visible:ring-transparent' id="password" placeholder="your password" {...register("password", 
-            { required: true})}/>
-            <i className={`mr-3 ${show?"bi-eye-slash":"bi bi-eye"} `} onClick={()=>setShow(!show)} ></i>
-          </div>
+              <Input type={show?"text":"password"} className='border-0 focus-visible:ring-transparent' id="password" placeholder="your password" {...register("password",
+              { required: true})}/>
+              <i className={`mr-3 ${show?"bi-eye-slash":"bi bi-eye"} `} onClick={()=>setShow(!show)} ></i>
+            </div>
           </div>
           <div className="mt-6">
-          {
+            {
             load?<Button className='w-full' disabled>Please wait...</Button>:<Button className='w-full'>Login</Button>
-          }
+            }
           </div>
         </form>
       </div>

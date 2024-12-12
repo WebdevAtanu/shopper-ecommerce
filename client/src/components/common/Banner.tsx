@@ -28,7 +28,7 @@ function Banner() {
 					autoplay:true,
 					interval:5000,
 					arrows:false,
-					height:'300px',
+					height:'250px',
 			}}>
 			{
 				banner.map((item,i)=>{

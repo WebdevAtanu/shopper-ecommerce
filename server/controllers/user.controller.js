@@ -101,6 +101,7 @@ export const userLogin = async(req, res) => {
 // ====================================user details================================================
 export const userDetails = (req, res) => {
     res.status(201).json({
+        id: req.user_details._id,
         name: req.user_details.name,
         address: req.user_details.address,
         phone: req.user_details.phone,
@@ -117,4 +118,31 @@ export const userLogout = (req, res) => {
         .json({
             message: 'user log out'
         })
+}
+
+// ====================================user update================================================
+export const userUpdate = async(req, res) => {
+    try {
+        const {
+            id,
+            name,
+            phone,
+            address
+        } = req.body;
+
+        await user.updateOne({
+            _id: id
+        }, {
+            name: name,
+            phone: phone,
+            address: address
+        })
+        res.status(200).json({
+            message: 'user updated'
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'server error'
+        })
+    }
 }

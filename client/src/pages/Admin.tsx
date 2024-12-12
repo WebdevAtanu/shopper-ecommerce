@@ -18,7 +18,8 @@ import {
 } from "@/components/ui/menubar"
 
 function Admin() {
-	const status=useSelector((state:any) =>state.adminReducer)
+	const status=useSelector((state:any) =>state.adminReducer);
+	const state=useSelector((state:any)=>state.dataTableReducer);
 	const navigate=useNavigate();
 	const [admin,setAdmin]=useState({ name: '', email: '' })
 	const [product,setProduct]=useState([])
@@ -52,7 +53,7 @@ function Admin() {
 		useEffect(()=>{
 			adminDetails();
 			productDetails();
-		},[])
+		},[state.current])
 
 		useEffect(()=>{
 			productDetails();

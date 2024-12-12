@@ -20,7 +20,7 @@ import {
 import { Button } from "@/components/ui/button"
 
 export default function DataTable ({data,columns}:any) {
-  const [sorting, setSorting] = useState<SortingState>([])
+  const [sorting, setSorting] = useState<SortingState>([]);
   const table = useReactTable({
     data,
     columns,

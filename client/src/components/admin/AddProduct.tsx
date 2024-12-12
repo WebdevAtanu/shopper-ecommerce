@@ -20,6 +20,7 @@ export default function AddProduct() {
                   toast.success(res.data.message);
                   setLoad(false);
                   reset();
+                  setImage("image.png");
                 })
                 .catch(err=>{
                   console.log(err);

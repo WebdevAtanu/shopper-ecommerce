@@ -19,7 +19,7 @@ function Cards(props:any) {
     </CardHeader>
     <CardContent>
     <p className='text-sm'>Brand- <span className='text-gray-700'>{props.brand}</span></p>
-    <p className='text-sm bg-[#301073] inline-block p-[3px] text-white my-1'>Limited time Offer</p>
+    <p className='text-xs bg-[#301073] inline-block p-[3px] text-white my-1'>Limited time Offer</p>
     <p>Price: <span><i className="bi bi-currency-rupee text-green-700"></i></span>{props.price} <span className='text-sm text-gray-500'>({props.discount}% off)</span></p>
     </CardContent>
     <CardFooter>

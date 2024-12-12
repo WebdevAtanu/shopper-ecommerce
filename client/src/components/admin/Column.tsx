@@ -1,14 +1,24 @@
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { MoreHorizontal } from "lucide-react"
-import editProducts from "@/service/editProducts";
-import deleteProducts from "@/service/deleteProducts";
+import Editor from "@/components/admin/Editor"
+import Deletor from "@/components/admin/Deletor"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export const Columns = [
   {
@@ -92,9 +102,29 @@ export const Columns = [
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={()=>editProducts(data)}>Edit product details</DropdownMenuItem>
-            <DropdownMenuItem onClick={()=>deleteProducts(data)}>Delete product</DropdownMenuItem>
+          <DropdownMenuContent align="end" className='flex flex-col items-start'>
+          <Dialog>
+            <DialogTrigger className='text-sm p-2'>Edit product details</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Update product details</DialogTitle>
+                <DialogDescription>
+                </DialogDescription>
+                  <Editor data={data}/>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+            <Dialog>
+            <DialogTrigger className='text-sm p-2'>Delete product</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Confirm product details</DialogTitle>
+                <DialogDescription>
+                </DialogDescription>
+                  <Deletor data={data}/>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
           </DropdownMenuContent>
         </DropdownMenu>
       )
