@@ -29,7 +29,7 @@ function Menu() {
 				<Sheet>
 				<SheetTrigger className='flex flex-col items-center cursor-pointer hover:bg-gray-100 p-2'>
 				<i className="bi bi-basket3-fill"></i>
-				<p className='text-xs'>Cart</p>
+				<p className='text-xs'>My cart</p>
 				</SheetTrigger>
 				<SheetContent>
 				<SheetHeader>
