@@ -11,7 +11,7 @@ import AdminLogin from '@/components/admin/AdminLogin';
 
 function Footer() {
 	return (
-		<div className='bg-slate-900 text-white pb-2'>
+		<div className='bg-slate-900 text-white mb-16'>
 		<footer className="grid grid-cols-3 gap-3 p-5 mt-5">
 			<div className='flex flex-col'>
 				<p className='cursor-pointer hover:underline underline-offset-4'>Branding</p>

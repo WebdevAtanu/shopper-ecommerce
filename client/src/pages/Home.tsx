@@ -6,6 +6,7 @@ import Banner from '@/components/common/Banner';
 import Filter from '@/components/common/Filter';
 import Products from '@/components/common/Products';
 import Footer from '@/components/common/Footer';
+import Menu from '@/components/common/Menu';
 
 function Home() {
 	const status=useSelector((state:any) =>state.loginReducer)
@@ -20,6 +21,7 @@ function Home() {
     <Filter/>
 		<Products/>
     <Footer/>
+    <Menu/>
 		</>
 	)
 }

@@ -103,7 +103,7 @@ export const Columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className='flex flex-col items-start'>
           <Dialog>
-            <DialogTrigger className='text-sm p-2'>Edit product details</DialogTrigger>
+            <DialogTrigger className='text-sm p-2 hover:bg-gray-100'>Edit product details</DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Update product details</DialogTitle>
@@ -114,7 +114,7 @@ export const Columns = [
             </DialogContent>
           </Dialog>
             <Dialog>
-            <DialogTrigger className='text-sm p-2'>Delete product</DialogTrigger>
+            <DialogTrigger className='text-sm p-2 hover:bg-gray-100'>Delete this product</DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Confirm product details</DialogTitle>
