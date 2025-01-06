@@ -29,19 +29,31 @@ function Banner() {
 	let items=[
 	{
 		image:'product/1.jpg',
-		text:'Get it now'
+		text:'Monday, Grab some deals'
 	},
 	{
 		image:'product/2.jpg',
-		text:'Starting from 99'
+		text:'Tuesday, Shoes and heels'
 	},
 	{
 		image:'product/3.jpg',
-		text:'Min 30% off'
+		text:'Wednesday, Shop with glee'
 	},
 	{
 		image:'product/4.jpg',
-		text:'Shop now'
+		text:'Thursday, Fruits and tea'
+	},
+	{
+		image:'product/5.jpg',
+		text:'Friday, Gifts and toys'
+	},
+	{
+		image:'product/6.jpg',
+		text:'Saturday, Joyful noise'
+	},
+	{
+		image:'product/7.jpg',
+		text:'Sunday, Rest, no spree'
 	},
 	]
 	return (
@@ -72,16 +84,16 @@ function Banner() {
 			}
 			</Splide>
 		</div>
-		<div className='h-1/2 p-3 m-3 bg-yellow-200 rounded-lg'>
-		<p className='text-xm mb-3 font-bold'>Friday street bargains</p>
+		<div className='h-1/2 py-2 bg-yellow-300'>
 			<Splide aria-label="My Favorite Images" options={
 				{
 					type:'loop',
 					pagination:false,
-					 perPage:8,
+					perPage:4,
 					arrows:false,
-					height:'150px',
-					gap:'15px',
+					height:'180px',
+					gap:'10px',
+					focus:"center",
 					breakpoints:{
 						768:{
 							perPage:2,
@@ -93,8 +105,8 @@ function Banner() {
 					return(
 					<SplideSlide key={i}>
 					<div className='h-full w-full relative'>
-    					<img src={item.image} alt="Image" className='h-full w-full object-fill'/>
-						<div className="absolute bottom-0 bg-black text-white w-full p-2">
+    					<img src={item.image} alt="Image" className='h-full w-full object-fill rounded-xl'/>
+						<div className="absolute bottom-0 bg-black text-white w-full p-2 rounded-b-xl">
 							<p className='text-xs'>{item.text}</p>
 						</div>
 					</div>

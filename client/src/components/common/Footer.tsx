@@ -11,7 +11,7 @@ import AdminLogin from '@/components/admin/AdminLogin';
 
 function Footer() {
 	return (
-		<div className='bg-slate-900 text-white mb-16'>
+		<div className='bg-slate-900 text-white mb-16 text-sm'>
 		<footer className="grid grid-cols-3 gap-3 p-5 mt-5">
 			<div className='flex flex-col'>
 				<p className='cursor-pointer hover:underline underline-offset-4'>Branding</p>
@@ -31,9 +31,9 @@ function Footer() {
 		</footer>
 		<p className='text-center'>copyright © 2024, all rights reserved</p>
 
-		<div className="flex justify-center">
+		<div className="flex justify-center pb-3">
 		<Dialog>
-		  <DialogTrigger className='text-sm text-blue-500 underline underline-offset-2'>Admin login</DialogTrigger>
+		  <DialogTrigger className='text-blue-500 underline underline-offset-2'>Admin login</DialogTrigger>
 		  <DialogContent>
 		    <DialogHeader>
 		      <DialogTitle >Admin login</DialogTitle>

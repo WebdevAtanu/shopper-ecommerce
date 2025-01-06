@@ -75,13 +75,13 @@ function Admin() {
 		return (
 		<div className="flex flex-col">
 		<div className='bg-slate-800 p-3 flex justify-between items-center'>
-		<div className="flex gap-2 items-center bg-white p-2 rounded-lg">
+		<div className="flex gap-2 items-center bg-white px-2 py-1 rounded-lg">
 			<Avatar>
 				<AvatarImage src="avatar.png" />
 				<AvatarFallback>A</AvatarFallback>
 			</Avatar>
 			<div>
-			<h1 className='text-xl'>{admin?.name}</h1>
+			<h1 className='text-sm'>Admin- {admin?.name}</h1>
 			</div>
 		</div>
 		<div>

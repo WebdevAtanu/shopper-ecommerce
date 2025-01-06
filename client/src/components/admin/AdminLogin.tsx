@@ -49,8 +49,8 @@ export default function AdminLogin() {
             <label htmlFor="email">Password {errors.password && <span className='text-sm text-red-500'> is required</span>}</label>
             <Input type="text" id="password" placeholder="admin password" {...register("password", { required: true })}/>
           </div>
-          <div className="mt-6">
-          <Button className="w-full" disabled={load} aria-busy={load} aria-live="polite">{load ? "Please wait..." : "Login"}</Button>
+          <div className="mt-6 flex justify-center">
+          <Button disabled={load} aria-busy={load} aria-live="polite">{load ? "Please wait..." : "Login"}</Button>
           </div>
         </form>
       </div>

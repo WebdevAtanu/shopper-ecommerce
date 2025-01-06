@@ -99,7 +99,7 @@ export default function UserSignup() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="grid w-full items-center gap-1">
             <label htmlFor="name">Name {errors.name && <span className='text-xs text-red-500'>{typeof errors.name.message === 'string' ? errors.name.message : 'Invalid'}</span>}</label>
-            <Input type="text" id="name" placeholder="John Doe" {...register("name", 
+            <Input type="text" id="name" placeholder="Mannubhai Gandhi" {...register("name", 
               { required:'name is required',
               minLength:{
                 value:5,
@@ -109,7 +109,7 @@ export default function UserSignup() {
 
           <div className="grid w-full items-center gap-1">
             <label htmlFor="number">Phone {errors.phone && <span className='text-xs text-red-500'>{typeof errors.phone.message === 'string' ? errors.phone.message : 'Invalid'}</span>}</label>
-            <Input type="number" id="number" placeholder="0000000000" {...register("phone", 
+            <Input type="number" id="number" placeholder="9876543210" {...register("phone", 
               { required:'phone no is required',
               minLength:{
                 value:10,
@@ -123,7 +123,7 @@ export default function UserSignup() {
 
           <div className="grid w-full items-center gap-1">
             <label htmlFor="email">Email {errors.email && <span className='text-xs text-red-500'>{typeof errors.email.message === 'string' ? errors.email.message : 'Invalid'}</span>}</label>
-            <Input type="email" id="email" placeholder="JohnDoe@gmail.com" {...register("email", 
+            <Input type="email" id="email" placeholder="MGgandhi@gmail.com" {...register("email", 
             { required: 'email is required',
             pattern: {
             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -148,7 +148,7 @@ export default function UserSignup() {
 
           <div className="grid w-full items-center gap-1">
             <label htmlFor="address">Address {errors.address && <span className='text-xs text-red-500'>{typeof errors.address.message === 'string' ? errors.address.message : 'Invalid'}</span>}</label>
-            <Textarea placeholder="Your address here" id="address" className='resize-none' {...register("address",
+            <Textarea placeholder="Your address here..." id="address" className='resize-none' {...register("address",
             { required: 'address is required',
             minLength:{
                 value:15,
@@ -161,10 +161,10 @@ export default function UserSignup() {
             })}/>
           </div>
           </div>
-          <div className="mt-6">
-          <p className="my-1 text-center">OTP will be send to your given email address</p>
+          <div className="mt-6 flex flex-col justify-center items-center">
+          <p className="my-1 text-sm text-center">OTP will be send to your given email address</p>
           {
-            load?<Button className='w-full' disabled>Please wait...</Button>:<Button className='w-full'>Send OTP</Button>
+            load?<Button disabled>Please wait...</Button>:<Button>Send OTP</Button>
           }
           </div>
         </form>

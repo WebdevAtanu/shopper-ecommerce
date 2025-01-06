@@ -41,7 +41,7 @@ export default function UserLogin() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid w-full items-center gap-1 mt-4">
             <label htmlFor="email">Email {errors.email && <span className='text-xs text-red-500'>email is required</span>}</label>
-            <Input type="text" id="email" placeholder="JohnDoe@gmail.com" {...register("email", { required: true })}/>
+            <Input type="text" id="email" placeholder="MGgandhi@gmail.com" {...register("email", { required: true })}/>
           </div>
           <div className="grid w-full items-center gap-1 mt-3">
             <label htmlFor="email">Password {errors.password && <span className='text-xs text-red-500'>password is required</span>}</label>
@@ -51,9 +51,9 @@ export default function UserLogin() {
               <i className={`mr-3 ${show?"bi-eye-slash":"bi bi-eye"} `} onClick={()=>setShow(!show)} ></i>
             </div>
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex justify-center">
             {
-            load?<Button className='w-full' disabled>Please wait...</Button>:<Button className='w-full'>Login</Button>
+            load?<Button disabled>Please wait...</Button>:<Button>Login</Button>
             }
           </div>
         </form>
