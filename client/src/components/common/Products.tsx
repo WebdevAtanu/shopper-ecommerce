@@ -83,7 +83,7 @@ function Products() {
     return (
     <>
     {
-    (allProduct.length!=0)?
+    (allProduct?.length!=0)?
     <div>
       <div className='grid gap-2'>
         <div className='col-span-4'>
